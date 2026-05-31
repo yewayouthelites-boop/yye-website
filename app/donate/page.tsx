@@ -1,11 +1,17 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import {
+  HiAcademicCap,
+  HiGlobeAlt,
+  HiBuildingLibrary,
+  HiUsers,
+} from 'react-icons/hi2'
 import RevealWrapper from '@/components/RevealWrapper'
 import DonateForm from '@/components/DonateForm'
 
 export const metadata: Metadata = {
   title: 'Donate',
-  description: 'Support Yewa Youth Elites. Every contribution helps us reach more Yewa youths, deliver more programs, and preserve our cultural heritage.',
+  description: 'Support Yèwà Youth Elites. Every contribution helps us reach more Yèwà youths, deliver more programs, and preserve our cultural heritage.',
 }
 
 /* ── Data ────────────────────────────────────────────────────────────── */
@@ -18,10 +24,10 @@ const impactTiers = [
 ]
 
 const wayCards = [
-  { icon: '🎓', title: 'Fund Education', desc: 'Support academic materials, school visits, and mentorship programs that help Yewa students succeed and stay in school.' },
-  { icon: '🌍', title: 'Empower Youth', desc: 'Fund skills workshops, career guidance sessions, and opportunities that prepare youth for a competitive, modern world.' },
-  { icon: '🏺', title: 'Preserve Culture', desc: 'Help us organise cultural events and heritage initiatives that keep the Yewa identity alive and celebrated for generations.' },
-  { icon: '🤝', title: 'Become a Partner', desc: 'Organisations and businesses can partner with YYE to co-sponsor programs and maximise community impact across Yewa.' },
+  { icon: <HiAcademicCap size={40} />,    title: 'Fund Education',   desc: 'Support academic materials, school visits, and mentorship programs that help Yèwà students succeed and stay in school.' },
+  { icon: <HiGlobeAlt size={40} />,       title: 'Empower Youth',    desc: 'Fund skills workshops, career guidance sessions, and opportunities that prepare youth for a competitive, modern world.' },
+  { icon: <HiBuildingLibrary size={40} />,title: 'Preserve Culture', desc: 'Help us organise cultural events and heritage initiatives that keep the Yèwà identity alive and celebrated for generations.' },
+  { icon: <HiUsers size={40} />,          title: 'Become a Partner', desc: 'Organisations and businesses can partner with YYE to co-sponsor programs and maximise community impact across Yèwà.' },
 ]
 
 /* ── Page ────────────────────────────────────────────────────────────── */
@@ -29,7 +35,7 @@ export default function DonatePage() {
   return (
     <>
       {/* ══ PAGE HERO ════════════════════════════════════════════════ */}
-      <div className="relative bg-yye-yellow px-[5%] pt-[140px] pb-20 overflow-hidden" style={{ backgroundImage: "url('/yye-icon.svg')", backgroundRepeat: 'repeat', backgroundSize: '90px auto' }}><div className="absolute inset-0 bg-yye-yellow/[0.94] pointer-events-none" />
+      <div className="relative bg-yye-cream px-[5%] pt-[140px] pb-20 overflow-hidden" style={{ backgroundImage: "url('/yye-icon.svg')", backgroundRepeat: 'repeat', backgroundSize: '90px auto' }}><div className="absolute inset-0 bg-yye-cream/[0.92] pointer-events-none" />
         <div className="relative z-[2] max-w-[680px]">
           <p className="text-[12px] font-semibold text-yye-dark/45 tracking-[0.08em] uppercase mb-4">
             <Link href="/" className="text-yye-dark font-bold no-underline hover:underline">Home</Link>
@@ -42,7 +48,7 @@ export default function DonatePage() {
             Your generosity changes lives.
           </h1>
           <p className="text-base text-yye-dark/65 leading-[1.7] max-w-[540px]">
-            Every contribution helps us reach more Yewa youths, deliver more programs, and preserve our cultural heritage for future generations. No amount is too small.
+            Every contribution helps us reach more Yèwà youths, deliver more programs, and preserve our cultural heritage for future generations. No amount is too small.
           </p>
         </div>
       </div>
@@ -96,7 +102,7 @@ export default function DonatePage() {
                   Prefer to pay directly to our account? Transfer and send us your receipt.
                 </p>
                 {[
-                  { label: 'Account Name', value: 'Yewa Youth Elites' },
+                  { label: 'Account Name', value: 'Yèwà Youth Elites' },
                   { label: 'Account Number', value: '— Add account no. —' },
                   { label: 'Bank', value: '— Add bank name —' },
                 ].map(({ label, value }) => (
@@ -120,7 +126,7 @@ export default function DonatePage() {
             <RevealWrapper delay={80}>
               <div className="bg-yye-dark rounded-[20px] p-8">
                 <h3 className="text-base font-extrabold text-yye-yellow mb-5 leading-[1.3]">
-                  Your money goes directly to Yewa youth.
+                  Your money goes directly to Yèwà youth.
                 </h3>
                 {[
                   '100% of donations support YYE programs and community initiatives',
@@ -153,7 +159,7 @@ export default function DonatePage() {
           {wayCards.map(({ icon, title, desc }, i) => (
             <RevealWrapper key={title} delay={i * 80}>
               <div className="bg-yye-light border border-yye-green/[0.1] rounded-[16px] p-[1.8rem] transition-all duration-200 hover:-translate-y-px hover:shadow-card-hover h-full">
-                <div className="text-[2rem] mb-4">{icon}</div>
+                <div className="w-[68px] h-[68px] rounded-[16px] bg-yye-green/[0.08] flex items-center justify-center text-yye-green mb-5">{icon}</div>
                 <h4 className="text-base font-extrabold mb-2">{title}</h4>
                 <p className="text-[13px] text-yye-gray leading-[1.6]">{desc}</p>
               </div>

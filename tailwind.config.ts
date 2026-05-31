@@ -15,9 +15,12 @@ const config: Config = {
           dark: '#0c7d21',
         },
         'yye-yellow': {
-          DEFAULT: '#F9D503',
-          dark: '#c9ab00',
+          // Muted golden — professional, less neon than the original #F9D503
+          DEFAULT: '#D4A300',
+          dark: '#B08700',
         },
+        // Very light warm cream — for large section backgrounds
+        'yye-cream': '#FEF6DC',
         'yye-dark': '#1E1E1E',
         'yye-gray': '#6b6b6b',
         'yye-light': '#F3FFF4',

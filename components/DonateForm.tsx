@@ -1,6 +1,7 @@
 'use client'
 
 import { useState } from 'react'
+import { HiHeart } from 'react-icons/hi2'
 import { Button } from '@/components/ui/Button'
 
 const PRESET_AMOUNTS = ['5000', '10000', '20000', '50000', '100000']
@@ -29,7 +30,7 @@ export default function DonateForm() {
   if (submitted) {
     return (
       <div className="bg-white rounded-[20px] p-10 border border-yye-green/[0.12] text-center py-16">
-        <div className="text-5xl mb-4">💛</div>
+        <div className="flex justify-center mb-4 text-yye-yellow"><HiHeart size={56} /></div>
         <p className="font-extrabold text-yye-dark text-xl mb-2">
           Thank you for your generous gift!
         </p>

@@ -1,25 +1,18 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import { HiSparkles } from 'react-icons/hi2'
 import RevealWrapper from '@/components/RevealWrapper'
+import TeamSlider from '@/components/TeamSlider'
 
 export const metadata: Metadata = {
   title: 'About Us',
-  description: 'Learn about the Yewa Youth Elites movement — our story, mission, vision, and the executive team driving our programs.',
+  description: 'Learn about the Yèwà Youth Elites movement — our story, mission, vision, and the executive team driving our programs.',
 }
 
-/* ── Team data ───────────────────────────────────────────────────────── */
-const team = [
-  { initials: 'VA', name: 'Victor Adeleye', role: 'President, YYE', color: '#11A32C', isPresident: true },
-  { initials: 'YA', name: 'Yosola Adekanmbi', role: 'General Secretary', color: '#1E7A35', isPresident: false },
-  { initials: 'SW', name: 'Sewedo Wusa', role: 'Director of Communications & Media', color: '#0c7d21', isPresident: false },
-  { initials: 'OA', name: 'Olayinka Abiodun', role: 'Director of ICT', color: '#2d8a3e', isPresident: false },
-  { initials: 'AJ', name: 'Ajibola Julius Olarenwaju', role: 'Director of Programs & Events Planning', color: '#156b25', isPresident: false },
-  { initials: 'JA', name: 'Joseph Aretola', role: 'Director of Welfare & Logistics', color: '#0e5c1e', isPresident: false },
-  { initials: 'DF', name: 'Damilola Fagbohun', role: 'Director of Membership', color: '#1a7a30', isPresident: false },
-]
+/* ── Note: team data lives in components/TeamSlider.tsx ─────────────── */
 
 const objectives = [
-  'Promote and preserve Yewa culture and heritage',
+  'Promote and preserve Yèwà culture and heritage',
   'Support youth development through education and mentorship',
   'Encourage innovation, entrepreneurship, and career growth',
   'Provide academic support and guidance for students',
@@ -30,7 +23,7 @@ const objectives = [
 const approach = [
   { num: '01', title: 'Community-driven design', desc: 'Every program is shaped by listening to the real challenges young people and communities face — not assumptions.' },
   { num: '02', title: 'School & leader partnerships', desc: 'We work directly with schools and local leaders to deliver programs where they matter most — on the ground.' },
-  { num: '03', title: 'Mentorship & exposure', desc: 'We connect Yewa youth with mentors and opportunities that expand their sense of what\'s possible for their future.' },
+  { num: '03', title: 'Mentorship & exposure', desc: 'We connect Yèwà youth with mentors and opportunities that expand their sense of what\'s possible for their future.' },
   { num: '04', title: 'Impact-focused execution', desc: 'We are deliberate about outcomes — every initiative is designed to create meaningful, measurable change in young lives.' },
 ]
 
@@ -58,7 +51,7 @@ export default function AboutPage() {
             an organization.
           </h1>
           <p className="text-base text-white/65 leading-[1.7] max-w-[540px]">
-            Yewa Youth Elites is a movement — built on culture, driven by purpose, and committed to raising a generation of Yewa youth who are ready to lead.
+            Yèwà Youth Elites is a movement — built on culture, driven by purpose, and committed to raising a generation of Yèwà youth who are ready to lead.
           </p>
         </div>
       </div>
@@ -74,13 +67,15 @@ export default function AboutPage() {
               <span className="absolute right-[-10px] bottom-[-20px] text-[8rem] font-extrabold opacity-[0.07] leading-none select-none pointer-events-none">YYE</span>
               <h3 className="text-[1.4rem] font-extrabold mb-3">Who We Are</h3>
               <p className="text-sm leading-[1.7] opacity-85">
-                Yewa Youth Elites (YYE) is a youth-focused, non-profit organization dedicated to promoting the cultural heritage of the Yewa people while driving sustainable youth development across Yewa communities.
+                Yèwà Youth Elites (YYE) is a youth-focused, non-profit organization dedicated to promoting the cultural heritage of the Yèwà people while driving sustainable youth development across Yèwà communities.
               </p>
             </div>
 
             {/* Accent card */}
-            <div className="bg-yye-yellow rounded-[16px] px-6 py-5 mt-4 flex items-center gap-4">
-              <div className="w-12 h-12 min-w-[48px] bg-yye-dark rounded-[12px] flex items-center justify-center text-[22px]">🌱</div>
+            <div className="bg-yye-cream rounded-[16px] px-6 py-5 mt-4 flex items-center gap-4">
+              <div className="w-12 h-12 min-w-[48px] bg-yye-dark rounded-[12px] flex items-center justify-center text-yye-yellow">
+                <HiSparkles size={24} />
+              </div>
               <p className="text-[13px] font-bold text-yye-dark leading-[1.4]">
                 Founded to empower young people with the mindset, skills, and opportunities they need — without losing their cultural identity.
               </p>
@@ -97,10 +92,10 @@ export default function AboutPage() {
 
             <div className="flex flex-col gap-4">
               {[
-                { label: 'Education & Mentorship', desc: 'School outreach, academic guidance, and mentorship that opens doors for Yewa students.' },
-                { label: 'Cultural Promotion', desc: 'Events and initiatives that celebrate and preserve the rich Yewa identity and heritage.' },
+                { label: 'Education & Mentorship', desc: 'School outreach, academic guidance, and mentorship that opens doors for Yèwà students.' },
+                { label: 'Cultural Promotion', desc: 'Events and initiatives that celebrate and preserve the rich Yèwà identity and heritage.' },
                 { label: 'Youth Empowerment', desc: 'Skills development, career guidance, and personal growth for the next generation.' },
-                { label: 'Community Development', desc: 'Programs that foster unity and sustainable growth across Yewa communities.' },
+                { label: 'Community Development', desc: 'Programs that foster unity and sustainable growth across Yèwà communities.' },
               ].map(({ label, desc }) => (
                 <div key={label} className="flex items-start gap-4 px-5 py-4 bg-white rounded-[12px] border border-yye-green/[0.1]">
                   <div className="w-2.5 h-2.5 min-w-[10px] bg-yye-green rounded-full mt-1.5" />
@@ -128,19 +123,19 @@ export default function AboutPage() {
             <div className="bg-yye-green rounded-[20px] p-10 border border-white/[0.08]">
               <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-white/70 mb-3">Our Mission</p>
               <h3 className="text-[1.5rem] font-extrabold text-white leading-[1.2] mb-3">
-                Empowering Yewa youths through education, mentorship, and culture.
+                Empowering Yèwà youths through education, mentorship, and culture.
               </h3>
               <p className="text-sm leading-[1.8] text-white/85">
-                We build capacity, preserve cultural values, and create pathways for young Yewa people to thrive — both within their communities and in the wider world.
+                We build capacity, preserve cultural values, and create pathways for young Yèwà people to thrive — both within their communities and in the wider world.
               </p>
             </div>
             <div className="bg-white/[0.04] rounded-[20px] p-10 border border-white/[0.08]">
               <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-white/70 mb-3">Our Vision</p>
               <h3 className="text-[1.5rem] font-extrabold text-yye-yellow leading-[1.2] mb-3">
-                A generation of Yewa youths who are grounded, equipped, and globally competitive.
+                A generation of Yèwà youths who are grounded, equipped, and globally competitive.
               </h3>
               <p className="text-sm leading-[1.8] text-white/75">
-                We see a future where every Yewa youth has the identity, knowledge, and opportunity to lead a meaningful, impactful life.
+                We see a future where every Yèwà youth has the identity, knowledge, and opportunity to lead a meaningful, impactful life.
               </p>
             </div>
           </div>
@@ -168,7 +163,7 @@ export default function AboutPage() {
           <span className="section-tag">How We Work</span>
           <h2 className="section-title text-center">Our approach to impact.</h2>
           <p className="section-sub mx-auto text-center">
-            Through mentorship, exposure, and access to opportunities, YYE unlocks the full potential of Yewa youths.
+            Through mentorship, exposure, and access to opportunities, YYE unlocks the full potential of Yèwà youths.
           </p>
         </RevealWrapper>
 
@@ -187,52 +182,19 @@ export default function AboutPage() {
 
       {/* ══ TEAM ══════════════════════════════════════════════════════ */}
       <section id="team" className="bg-yye-light px-[5%] py-24">
-        <RevealWrapper className="text-center mb-14">
+        <RevealWrapper className="text-center mb-12">
           <span className="section-tag">Leadership</span>
           <h2 className="section-title text-center">Meet the executive team</h2>
           <p className="section-sub mx-auto text-center">
             The dedicated leaders driving YYE&apos;s mission across every focus area.
+            <span className="block mt-1 text-[12px] text-yye-gray/60">Drag, swipe, or use the arrows to explore</span>
           </p>
         </RevealWrapper>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-6">
-          {team.map(({ initials, name, role, color, isPresident }, i) => (
-            <RevealWrapper key={name} delay={i * 60}>
-              <div
-                className={[
-                  'bg-white rounded-[20px] px-6 py-8 text-center transition-all duration-200 hover:-translate-y-px hover:shadow-card-hover',
-                  isPresident
-                    ? 'border-2 border-yye-green bg-yye-light'
-                    : 'border border-yye-green/[0.1]',
-                ].join(' ')}
-              >
-                {/* Avatar */}
-                <div
-                  className="w-[88px] h-[88px] rounded-full mx-auto mb-5 flex items-center justify-center text-[1.6rem] font-extrabold text-white"
-                  style={{
-                    backgroundColor: color,
-                    boxShadow: isPresident ? '0 0 0 4px rgba(17,163,44,0.15)' : undefined,
-                  }}
-                >
-                  {initials}
-                </div>
-
-                {isPresident && (
-                  <span className="inline-block bg-yye-green text-white text-[10px] font-bold tracking-[0.08em] uppercase px-[10px] py-[3px] rounded-full mb-3">
-                    President
-                  </span>
-                )}
-
-                <p className={`text-[15px] font-extrabold text-yye-dark mb-1 leading-[1.3] ${isPresident ? 'text-yye-dark' : ''}`}>
-                  {name}
-                </p>
-                <p className={`text-[12px] font-medium leading-[1.4] ${isPresident ? 'text-yye-green font-bold' : 'text-yye-gray'}`}>
-                  {role}
-                </p>
-              </div>
-            </RevealWrapper>
-          ))}
-        </div>
+        {/* Slider — constrained width so it reads as a focused panel */}
+        <RevealWrapper className="max-w-[760px] mx-auto">
+          <TeamSlider />
+        </RevealWrapper>
       </section>
     </>
   )

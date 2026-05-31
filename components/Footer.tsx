@@ -1,4 +1,5 @@
 import Link from 'next/link'
+import { FaInstagram, FaXTwitter, FaFacebook } from 'react-icons/fa6'
 
 export default function Footer() {
   return (
@@ -9,12 +10,12 @@ export default function Footer() {
         {/* Brand col */}
         <div>
           {/* Icon mark only (no text) — sits on dark bg, original yellow+green colours work well */}
-          <Link href="/" className="inline-flex no-underline mb-3" aria-label="Yewa Youth Elites home">
+          <Link href="/" className="inline-flex no-underline mb-3" aria-label="Yèwà Youth Elites home">
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img src="/yye-icon.svg" alt="YYE" style={{ height: 44, width: 'auto' }} />
           </Link>
           <p className="text-[13px] text-white/55 leading-[1.7] mt-4 max-w-[280px]">
-            A movement committed to shaping the future of Yewa youths through education, mentorship, and cultural pride.
+            A movement committed to shaping the future of Yèwà youths through education, mentorship, and cultural pride.
           </p>
         </div>
 
@@ -61,11 +62,11 @@ export default function Footer() {
 
       {/* Bottom row */}
       <div className="flex justify-between items-center pt-8 flex-wrap gap-4">
-        <p className="text-[12px] text-white/35">© 2025 Yewa Youth Elites. All rights reserved.</p>
+        <p className="text-[12px] text-white/35">© 2025 Yèwà Youth Elites. All rights reserved.</p>
         <div className="flex gap-3">
-          <a href="#" className="social-btn" aria-label="Instagram">ig</a>
-          <a href="#" className="social-btn" aria-label="Twitter">𝕏</a>
-          <a href="#" className="social-btn" aria-label="Facebook">fb</a>
+          <a href="#" className="social-btn" aria-label="Instagram"><FaInstagram size={16} /></a>
+          <a href="#" className="social-btn" aria-label="Twitter / X"><FaXTwitter size={16} /></a>
+          <a href="#" className="social-btn" aria-label="Facebook"><FaFacebook size={16} /></a>
         </div>
       </div>
     </footer>

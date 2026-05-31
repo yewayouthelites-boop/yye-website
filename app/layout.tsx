@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 import Navbar from '@/components/Navbar'
 import Footer from '@/components/Footer'
+// @ts-ignore: allow importing global css without type declarations
 import './globals.css'
 
 // Host Grotesk is the brand typeface per the YYE Brand Guide (Light · Medium · ExtraBold)
@@ -13,15 +14,15 @@ export const metadata: Metadata = {
     apple: '/favicon.svg',
   },
   title: {
-    template: '%s — Yewa Youth Elites',
-    default: 'Yewa Youth Elites — Raising the Next Generation of Yewa Leaders',
+    template: '%s — Yèwà Youth Elites',
+    default: 'Yèwà Youth Elites — Raising the Next Generation of Yèwà Leaders',
   },
   description:
-    'A non-profit movement dedicated to empowering Yewa youths with education, mentorship, and cultural pride — building a generation grounded in identity and ready for the world.',
-  keywords: ['Yewa', 'youth', 'empowerment', 'education', 'mentorship', 'Nigeria', 'culture','ogunstate','club','elite'],
+    'A non-profit movement dedicated to empowering Yèwà youths with education, mentorship, and cultural pride — building a generation grounded in identity and ready for the world.',
+  keywords: ['Yèwà', 'youth', 'empowerment', 'education', 'mentorship', 'Nigeria', 'culture','ogunstate','club','elite'],
   openGraph: {
-    title: 'Yewa Youth Elites',
-    description: 'Raising the next generation of Yewa leaders.',
+    title: 'Yèwà Youth Elites',
+    description: 'Raising the next generation of Yèwà leaders.',
     type: 'website',
   },
 }

@@ -1,25 +1,36 @@
 import type { Metadata } from 'next'
 import Link from 'next/link'
+import {
+  HiGlobeAlt,
+  HiUserGroup,
+  HiAcademicCap,
+  HiHeart,
+  HiLightBulb,
+  HiBuildingLibrary,
+  HiUsers,
+  HiEnvelope,
+} from 'react-icons/hi2'
+import { FaInstagram, FaXTwitter, FaFacebook } from 'react-icons/fa6'
 import RevealWrapper from '@/components/RevealWrapper'
 import ContactForm from '@/components/ContactForm'
 
 export const metadata: Metadata = {
-  title: 'Yewa Youth Elites — Raising the Next Generation of Yewa Leaders',
+  title: 'Yèwà Youth Elites — Raising the Next Generation of Yèwà Leaders',
 }
 
 /* ── Data ────────────────────────────────────────────────────────────── */
 const snapCards = [
-  { icon: '🌍', title: 'Who We Are', desc: 'A non-profit movement dedicated to empowering Yewa youths with education, mentorship, and cultural pride.', link: 'Learn about YYE →', href: '/about' },
-  { icon: '👥', title: 'Our Executive Team', desc: 'Meet the 7 passionate leaders driving every program and initiative across Yewa communities.', link: 'Meet the team →', href: '/about#team' },
-  { icon: '🎓', title: 'Our Programs', desc: 'From school outreach to cultural events — our programs are built around real community needs.', link: 'See programs →', href: '#programs' },
-  { icon: '💛', title: 'Support Our Work', desc: 'Your donation directly funds mentorship, education, and cultural preservation for Yewa youth.', link: 'Donate now →', href: '/donate' },
+  { icon: <HiGlobeAlt size={40} />,    title: 'Who We Are',        desc: 'A non-profit movement dedicated to empowering Yèwà youths with education, mentorship, and cultural pride.',       link: 'Learn about YYE →', href: '/about' },
+  { icon: <HiUserGroup size={40} />,   title: 'Our Executive Team', desc: 'Meet the 7 passionate leaders driving every program and initiative across Yèwà communities.',                    link: 'Meet the team →',   href: '/about#team' },
+  { icon: <HiAcademicCap size={40} />, title: 'Our Programs',       desc: 'From school outreach to cultural events — our programs are built around real community needs.',                  link: 'See programs →',    href: '#programs' },
+  { icon: <HiHeart size={40} />,       title: 'Support Our Work',   desc: 'Your donation directly funds mentorship, education, and cultural preservation for Yèwà youth.',                   link: 'Donate now →',      href: '/donate' },
 ]
 
 const programs = [
-  { icon: '🎓', tag: 'Education', title: 'Academic Support & Outreach', desc: 'School outreach programs, mentorship sessions, and learning initiatives that give Yewa students the guidance they need to excel — from the classroom to their careers.', variant: 'featured' },
-  { icon: '💡', tag: 'Empowerment', title: 'Skills & Career Development', desc: 'Equipping young Yewa people with practical skills, entrepreneurial thinking, and career guidance to help them compete in a modern world.', variant: 'default' },
-  { icon: '🏺', tag: 'Culture', title: 'Cultural Promotion & Heritage', desc: 'Through events, storytelling, and community engagement, we celebrate and preserve the traditions and identity of the Yewa people for future generations.', variant: 'default' },
-  { icon: '🤝', tag: 'Community', title: 'Community Development Programs', desc: 'Working with schools, local leaders, and partners to design programs that address real challenges and foster unity across Yewa communities.', variant: 'dark' },
+  { icon: <HiAcademicCap size={40} />,    tag: 'Education',   title: 'Academic Support & Outreach',       desc: 'School outreach programs, mentorship sessions, and learning initiatives that give Yèwà students the guidance they need to excel — from the classroom to their careers.', variant: 'featured' },
+  { icon: <HiLightBulb size={40} />,      tag: 'Empowerment', title: 'Skills & Career Development',       desc: 'Equipping young Yèwà people with practical skills, entrepreneurial thinking, and career guidance to help them compete in a modern world.',                                variant: 'default' },
+  { icon: <HiBuildingLibrary size={40} />,tag: 'Culture',     title: 'Cultural Promotion & Heritage',     desc: 'Through events, storytelling, and community engagement, we celebrate and preserve the traditions and identity of the Yèwà people for future generations.',                variant: 'default' },
+  { icon: <HiUsers size={40} />,          tag: 'Community',   title: 'Community Development Programs',    desc: 'Working with schools, local leaders, and partners to design programs that address real challenges and foster unity across Yèwà communities.',                             variant: 'dark' },
 ]
 
 /* ── Component ───────────────────────────────────────────────────────── */
@@ -40,7 +51,7 @@ export default function HomePage() {
           {/* Badge */}
           <div className="inline-flex items-center gap-2 bg-yye-yellow/[0.12] border border-yye-yellow/30 text-yye-yellow px-[14px] py-1.5 rounded-full text-[12px] font-semibold tracking-[0.08em] uppercase mb-6 animate-fade-up">
             <span className="w-1.5 h-1.5 bg-yye-yellow rounded-full" />
-            Yewa Youth Elites
+            Yèwà Youth Elites
           </div>
 
           {/* Headline */}
@@ -50,7 +61,7 @@ export default function HomePage() {
           >
             Raising the{' '}
             <em className="text-yye-yellow not-italic">next generation</em>{' '}
-            of Yewa leaders.
+            of Yèwà leaders.
           </h1>
 
           {/* Sub */}
@@ -58,7 +69,7 @@ export default function HomePage() {
             className="text-white/65 leading-[1.7] max-w-[520px] mb-10 animate-fade-up-2"
             style={{ fontSize: 'clamp(1rem, 1.8vw, 1.2rem)' }}
           >
-            We empower Yewa youths through education, mentorship, and cultural pride — building a generation that is grounded in identity and ready for the world.
+            We empower Yèwà youths through education, mentorship, and cultural pride — building a generation that is grounded in identity and ready for the world.
           </p>
 
           {/* CTAs */}
@@ -100,7 +111,7 @@ export default function HomePage() {
                 href={href}
                 className="bg-white border border-yye-green/[0.1] rounded-[18px] p-[1.8rem] block no-underline text-yye-dark transition-all duration-200 hover:-translate-y-px hover:shadow-card-hover hover:border-yye-green/25 h-full"
               >
-                <div className="text-[2rem] mb-4">{icon}</div>
+                <div className="w-[68px] h-[68px] rounded-[16px] bg-yye-green/[0.06] flex items-center justify-center text-yye-green mb-5">{icon}</div>
                 <h3 className="text-[1.05rem] font-extrabold mb-1.5">{title}</h3>
                 <p className="text-[13px] text-yye-gray leading-[1.6]">{desc}</p>
                 <span className="inline-block mt-[0.9rem] text-[12px] font-bold text-yye-green tracking-[0.05em]">{link}</span>
@@ -144,10 +155,10 @@ export default function HomePage() {
             <div className="bg-yye-green rounded-[20px] p-10 border border-white/[0.08]">
               <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-white/70 mb-3">Our Mission</p>
               <h3 className="text-[1.5rem] font-extrabold text-white leading-[1.2] mb-3">
-                Empowering Yewa youths through education, mentorship, and culture.
+                Empowering Yèwà youths through education, mentorship, and culture.
               </h3>
               <p className="text-sm leading-[1.8] text-white/85">
-                We build capacity, preserve cultural values, and create pathways for young Yewa people to thrive — both within their communities and in the wider world.
+                We build capacity, preserve cultural values, and create pathways for young Yèwà people to thrive — both within their communities and in the wider world.
               </p>
             </div>
 
@@ -155,10 +166,10 @@ export default function HomePage() {
             <div className="bg-white/[0.04] rounded-[20px] p-10 border border-white/[0.08]">
               <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-white/70 mb-3">Our Vision</p>
               <h3 className="text-[1.5rem] font-extrabold text-yye-yellow leading-[1.2] mb-3">
-                A generation of Yewa youths who are grounded, equipped, and globally competitive.
+                A generation of Yèwà youths who are grounded, equipped, and globally competitive.
               </h3>
               <p className="text-sm leading-[1.8] text-white/75">
-                We see a future where every Yewa youth has the identity, knowledge, and opportunity to lead a meaningful, impactful life.
+                We see a future where every Yèwà youth has the identity, knowledge, and opportunity to lead a meaningful, impactful life.
               </p>
             </div>
           </div>
@@ -166,17 +177,17 @@ export default function HomePage() {
       </section>
 
       {/* ══ DONATE CTA ════════════════════════════════════════════════ */}
-      <section id="donate-cta" className="bg-yye-yellow px-[5%] py-20">
+      <section id="donate-cta" className="bg-yye-cream px-[5%] py-20">
         <RevealWrapper className="flex items-center justify-between gap-8 flex-wrap">
           <div>
             <h2
               className="font-extrabold text-yye-dark leading-[1.2] max-w-[520px]"
               style={{ fontSize: 'clamp(1.6rem, 3vw, 2.2rem)' }}
             >
-              Your support builds the future of Yewa youth.
+              Your support builds the future of Yèwà youth.
             </h2>
             <p className="text-[15px] text-yye-dark/70 mt-2 max-w-[480px]">
-              Every contribution — large or small — funds real programs that change real lives in Yewa communities.
+              Every contribution — large or small — funds real programs that change real lives in Yèwà communities.
             </p>
           </div>
           <Link href="/donate" className="btn-dark">Donate Now →</Link>
@@ -189,7 +200,7 @@ export default function HomePage() {
           <span className="section-tag">Get In Touch</span>
           <h2 className="section-title text-center">Join the YYE movement.</h2>
           <p className="section-sub mx-auto text-center">
-            Whether you&apos;re a student, mentor, partner, or simply someone who cares about the Yewa community — there is a place for you here.
+            Whether you&apos;re a student, mentor, partner, or simply someone who cares about the Yèwà community — there is a place for you here.
           </p>
         </RevealWrapper>
 
@@ -202,20 +213,20 @@ export default function HomePage() {
             </p>
             <div className="flex flex-col gap-3">
               <a href="mailto:info@yewayouthelites.org" className="contact-link">
-                <div className="contact-link-icon">✉️</div>
+                <div className="contact-link-icon"><HiEnvelope size={20} /></div>
                 info@yewayouthelites.org
               </a>
               <a href="#" className="contact-link">
-                <div className="contact-link-icon">📸</div>
-                @YewaYouthElites on Instagram
+                <div className="contact-link-icon"><FaInstagram size={20} /></div>
+                @YèwàYouthElites on Instagram
               </a>
               <a href="#" className="contact-link">
-                <div className="contact-link-icon">🐦</div>
+                <div className="contact-link-icon"><FaXTwitter size={20} /></div>
                 @YYE on X (Twitter)
               </a>
               <a href="#" className="contact-link">
-                <div className="contact-link-icon">📘</div>
-                Yewa Youth Elites on Facebook
+                <div className="contact-link-icon"><FaFacebook size={20} /></div>
+                Yèwà Youth Elites on Facebook
               </a>
             </div>
           </RevealWrapper>
@@ -238,7 +249,7 @@ function ProgramCard({
   desc,
   variant = 'default',
 }: {
-  icon: string
+  icon: React.ReactNode
   tag: string
   title: string
   desc: string
@@ -258,6 +269,12 @@ function ProgramCard({
     default: 'bg-yye-green/[0.08]',
   }
 
+  const iconColor = {
+    featured: 'text-white',
+    dark: 'text-white/80',
+    default: 'text-yye-green',
+  }
+
   const tagStyle = {
     featured: 'bg-yye-yellow/20 text-yye-yellow',
     dark: 'bg-yye-green/20 text-[#6ee883]',
@@ -269,7 +286,8 @@ function ProgramCard({
 
   return (
     <div className={styles[variant]}>
-      <div className={`w-[52px] h-[52px] rounded-[14px] flex items-center justify-center text-2xl mb-5 ${iconBg[variant]}`}>
+      {/* Icon container — sized to hold 40 px icon with comfortable padding */}
+      <div className={`w-[68px] h-[68px] rounded-[16px] flex items-center justify-center mb-5 ${iconBg[variant]} ${iconColor[variant]}`}>
         {icon}
       </div>
       <span className={`inline-block text-[10px] font-bold tracking-[0.1em] uppercase px-[10px] py-[3px] rounded-full mb-3 ${tagStyle[variant]}`}>
