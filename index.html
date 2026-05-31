@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Yewa Youth Elites — Raising the Next Generation of Yewa Leaders</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --green: #11A32C; --green-dark: #0c7d21; --yellow: #F9D503; --yellow-dark: #c9ab00;
+    --dark: #1E1E1E; --gray: #6b6b6b; --light: #F3FFF4; --white: #ffffff;
+    --font: 'Plus Jakarta Sans', sans-serif;
+  }
+  html { scroll-behavior: smooth; }
+  body { font-family: var(--font); color: var(--dark); background: var(--white); overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 1.1rem 5%; background: rgba(255,255,255,0.95); backdrop-filter: blur(12px); border-bottom: 1px solid rgba(17,163,44,0.12); transition: box-shadow 0.3s; }
+  nav.scrolled { box-shadow: 0 2px 24px rgba(17,163,44,0.10); }
+  .nav-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; }
+  .logo-mark { width: 42px; height: 42px; background: var(--green); border-radius: 10px; display: flex; align-items: center; justify-content: center; }
+  .logo-mark svg { width: 26px; height: 26px; }
+  .logo-text { display: flex; flex-direction: column; line-height: 1.1; }
+  .logo-text span:first-child { font-size: 13px; font-weight: 800; color: var(--green); letter-spacing: 0.04em; }
+  .logo-text span:last-child { font-size: 10px; font-weight: 500; color: var(--gray); letter-spacing: 0.06em; }
+  .nav-links { display: flex; align-items: center; gap: 2rem; list-style: none; }
+  .nav-links a { text-decoration: none; font-size: 14px; font-weight: 500; color: var(--dark); transition: color 0.2s; }
+  .nav-links a:hover { color: var(--green); }
+  .nav-links a.active { color: var(--green); font-weight: 700; }
+  .nav-donate { background: var(--yellow); color: var(--dark) !important; padding: 0.55rem 1.3rem; border-radius: 8px; font-weight: 700 !important; }
+  .nav-donate:hover { background: var(--yellow-dark) !important; }
+  .nav-cta { background: var(--green); color: var(--white) !important; padding: 0.55rem 1.3rem; border-radius: 8px; font-weight: 700 !important; }
+  .nav-cta:hover { background: var(--green-dark) !important; }
+  .hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; background: none; border: none; padding: 4px; }
+  .hamburger span { display: block; width: 24px; height: 2px; background: var(--dark); border-radius: 2px; }
+  .mobile-menu { display: none; position: fixed; top: 70px; left: 0; right: 0; background: var(--white); border-bottom: 1px solid rgba(17,163,44,0.12); padding: 1.5rem 5%; flex-direction: column; gap: 1.2rem; z-index: 99; }
+  .mobile-menu.open { display: flex; }
+  .mobile-menu a { text-decoration: none; font-size: 16px; font-weight: 500; color: var(--dark); }
+  .mobile-menu .m-donate { background: var(--yellow); color: var(--dark); padding: 0.75rem 1.5rem; border-radius: 8px; text-align: center; font-weight: 700; }
+  .mobile-menu .m-join { background: var(--green); color: var(--white); padding: 0.75rem 1.5rem; border-radius: 8px; text-align: center; font-weight: 700; }
+
+  /* HERO */
+  #home { min-height: 100vh; background: var(--dark); display: flex; align-items: center; position: relative; overflow: hidden; padding: 120px 5% 80px; }
+  .hero-pattern { position: absolute; top: 0; right: 0; width: 55%; height: 100%; opacity: 0.07; background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(249,213,3,0.5) 40px, rgba(249,213,3,0.5) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(249,213,3,0.5) 40px, rgba(249,213,3,0.5) 41px); }
+  .hero-accent { position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: var(--green); opacity: 0.12; border-radius: 50%; }
+  .hero-accent2 { position: absolute; bottom: -100px; right: 200px; width: 300px; height: 300px; background: var(--yellow); opacity: 0.10; border-radius: 50%; }
+  .hero-content { position: relative; z-index: 2; max-width: 700px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(249,213,3,0.12); border: 1px solid rgba(249,213,3,0.3); color: var(--yellow); padding: 6px 14px; border-radius: 100px; font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 1.5rem; animation: fadeUp 0.6s ease both; }
+  .hero-badge::before { content: ''; width: 6px; height: 6px; background: var(--yellow); border-radius: 50%; }
+  .hero-headline { font-size: clamp(2.8rem, 6vw, 5rem); font-weight: 800; color: var(--white); line-height: 1.05; letter-spacing: -0.02em; margin-bottom: 1.5rem; animation: fadeUp 0.6s 0.1s ease both; }
+  .hero-headline em { color: var(--yellow); font-style: normal; }
+  .hero-sub { font-size: clamp(1rem, 1.8vw, 1.2rem); color: rgba(255,255,255,0.65); line-height: 1.7; max-width: 520px; margin-bottom: 2.5rem; animation: fadeUp 0.6s 0.2s ease both; }
+  .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; animation: fadeUp 0.6s 0.3s ease both; }
+  .btn-primary { background: var(--green); color: var(--white); padding: 0.9rem 2rem; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-primary:hover { background: var(--green-dark); transform: translateY(-2px); }
+  .btn-yellow { background: var(--yellow); color: var(--dark); padding: 0.9rem 2rem; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: background 0.2s, transform 0.15s; display: inline-block; }
+  .btn-yellow:hover { background: var(--yellow-dark); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--white); border: 1.5px solid rgba(255,255,255,0.3); padding: 0.9rem 2rem; border-radius: 10px; font-weight: 600; font-size: 15px; text-decoration: none; transition: border-color 0.2s, transform 0.15s; display: inline-block; }
+  .btn-outline:hover { border-color: var(--yellow); color: var(--yellow); transform: translateY(-2px); }
+  .hero-stats { display: flex; gap: 2.5rem; margin-top: 3.5rem; padding-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); flex-wrap: wrap; animation: fadeUp 0.6s 0.4s ease both; }
+  .stat-item { display: flex; flex-direction: column; gap: 4px; }
+  .stat-num { font-size: 2rem; font-weight: 800; color: var(--yellow); }
+  .stat-label { font-size: 12px; color: rgba(255,255,255,0.5); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; }
+
+  /* SECTION BASE */
+  section { padding: 6rem 5%; }
+  .section-tag { display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: var(--green); background: rgba(17,163,44,0.08); padding: 5px 14px; border-radius: 100px; margin-bottom: 1rem; }
+  .section-title { font-size: clamp(1.8rem, 3.5vw, 2.8rem); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 1rem; color: var(--dark); }
+  .section-sub { font-size: 16px; color: var(--gray); line-height: 1.7; max-width: 540px; }
+
+  /* SNAPSHOT / INTRO STRIP */
+  #snapshot { background: var(--light); }
+  .snapshot-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; margin-top: 3rem; }
+  .snap-card { background: var(--white); border: 1px solid rgba(17,163,44,0.1); border-radius: 18px; padding: 1.8rem; transition: transform 0.2s, box-shadow 0.2s; text-decoration: none; color: var(--dark); display: block; }
+  .snap-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(17,163,44,0.11); }
+  .snap-icon { font-size: 2rem; margin-bottom: 1rem; }
+  .snap-title { font-size: 1.05rem; font-weight: 800; margin-bottom: 0.4rem; }
+  .snap-desc { font-size: 13px; color: var(--gray); line-height: 1.6; }
+  .snap-link { display: inline-block; margin-top: 0.9rem; font-size: 12px; font-weight: 700; color: var(--green); letter-spacing: 0.05em; }
+
+  /* PROGRAMS */
+  #programs { background: var(--white); }
+  .programs-header { display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 3rem; flex-wrap: wrap; gap: 1.5rem; }
+  .programs-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem; }
+  .program-card { border-radius: 16px; padding: 2rem; border: 1px solid rgba(17,163,44,0.1); transition: transform 0.2s, box-shadow 0.2s; position: relative; overflow: hidden; background: var(--white); }
+  .program-card:hover { transform: translateY(-6px); box-shadow: 0 16px 40px rgba(17,163,44,0.12); }
+  .program-card.featured { background: var(--green); color: var(--white); border-color: transparent; }
+  .program-card.featured .prog-title { color: var(--white); }
+  .program-card.featured .prog-desc { color: rgba(255,255,255,0.8); }
+  .program-card.featured .prog-tag { background: rgba(249,213,3,0.2); color: var(--yellow); }
+  .program-card.dark { background: var(--dark); border-color: transparent; }
+  .program-card.dark .prog-title { color: var(--white); }
+  .program-card.dark .prog-desc { color: rgba(255,255,255,0.7); }
+  .program-card.dark .prog-tag { background: rgba(17,163,44,0.2); color: #6ee883; }
+  .prog-icon { width: 52px; height: 52px; border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 24px; margin-bottom: 1.2rem; background: rgba(17,163,44,0.08); }
+  .program-card.featured .prog-icon { background: rgba(255,255,255,0.15); }
+  .program-card.dark .prog-icon { background: rgba(255,255,255,0.08); }
+  .prog-tag { display: inline-block; font-size: 10px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--green); background: rgba(17,163,44,0.08); padding: 3px 10px; border-radius: 100px; margin-bottom: 0.75rem; }
+  .prog-title { font-size: 1.15rem; font-weight: 800; margin-bottom: 0.6rem; color: var(--dark); }
+  .prog-desc { font-size: 13px; line-height: 1.7; color: var(--gray); }
+
+  /* MISSION STRIP */
+  .mvv { background: var(--dark); padding: 6rem 5%; }
+  .mvv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; margin-top: 3rem; }
+  .mvv-card { border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(255,255,255,0.08); }
+  .mvv-card.mission { background: var(--green); }
+  .mvv-card.vision { background: rgba(255,255,255,0.04); }
+  .mvv-card.vision .mvv-title { color: var(--yellow); }
+  .mvv-card.vision .mvv-body { color: rgba(255,255,255,0.75); }
+  .mvv-label { font-size: 11px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 0.75rem; opacity: 0.7; color: var(--white); }
+  .mvv-title { font-size: 1.5rem; font-weight: 800; color: var(--white); margin-bottom: 0.75rem; line-height: 1.2; }
+  .mvv-body { font-size: 14px; line-height: 1.8; color: rgba(255,255,255,0.85); }
+
+  /* DONATE CTA STRIP */
+  #donate-cta { background: var(--yellow); padding: 5rem 5%; }
+  .donate-cta-inner { display: flex; align-items: center; justify-content: space-between; gap: 2rem; flex-wrap: wrap; }
+  .donate-cta-inner h2 { font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800; color: var(--dark); line-height: 1.2; max-width: 520px; }
+  .donate-cta-inner p { font-size: 15px; color: rgba(30,30,30,0.7); margin-top: 0.5rem; max-width: 480px; }
+  .btn-dark { background: var(--dark); color: var(--white); padding: 1rem 2.2rem; border-radius: 10px; font-weight: 700; font-size: 15px; text-decoration: none; transition: opacity 0.2s, transform 0.15s; display: inline-block; white-space: nowrap; }
+  .btn-dark:hover { opacity: 0.85; transform: translateY(-2px); }
+
+  /* CONTACT */
+  #contact { background: var(--light); }
+  .contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 4rem; align-items: start; margin-top: 3rem; }
+  .contact-info h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 0.75rem; }
+  .contact-info p { font-size: 14px; color: var(--gray); line-height: 1.7; margin-bottom: 2rem; }
+  .contact-links { display: flex; flex-direction: column; gap: 0.75rem; }
+  .contact-link { display: flex; align-items: center; gap: 0.9rem; padding: 0.9rem 1.2rem; background: var(--white); border-radius: 12px; border: 1px solid rgba(17,163,44,0.1); text-decoration: none; color: var(--dark); font-size: 14px; font-weight: 500; transition: border-color 0.2s, transform 0.15s; }
+  .contact-link:hover { border-color: var(--green); transform: translateX(4px); }
+  .contact-link-icon { width: 36px; height: 36px; background: rgba(17,163,44,0.08); border-radius: 8px; display: flex; align-items: center; justify-content: center; font-size: 18px; }
+  .contact-form { background: var(--white); border-radius: 20px; padding: 2.5rem; border: 1px solid rgba(17,163,44,0.1); }
+  .form-title { font-size: 1.2rem; font-weight: 800; margin-bottom: 1.5rem; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .form-group { display: flex; flex-direction: column; gap: 6px; margin-bottom: 1rem; }
+  .form-group label { font-size: 12px; font-weight: 600; color: var(--gray); letter-spacing: 0.05em; text-transform: uppercase; }
+  .form-group input, .form-group select, .form-group textarea { padding: 0.75rem 1rem; border-radius: 10px; border: 1.5px solid rgba(17,163,44,0.15); font-family: var(--font); font-size: 14px; color: var(--dark); outline: none; transition: border-color 0.2s; background: var(--white); width: 100%; }
+  .form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--green); }
+  .form-group textarea { resize: vertical; min-height: 100px; }
+  .form-submit { width: 100%; padding: 1rem; background: var(--green); color: var(--white); border: none; border-radius: 10px; font-family: var(--font); font-size: 15px; font-weight: 700; cursor: pointer; transition: background 0.2s, transform 0.15s; margin-top: 0.5rem; }
+  .form-submit:hover { background: var(--green-dark); transform: translateY(-2px); }
+
+  /* FOOTER */
+  footer { background: var(--dark); color: var(--white); padding: 4rem 5% 2rem; }
+  .footer-top { display: grid; grid-template-columns: 1.5fr 1fr 1fr; gap: 3rem; padding-bottom: 3rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .footer-brand p { font-size: 13px; color: rgba(255,255,255,0.55); line-height: 1.7; margin-top: 1rem; max-width: 280px; }
+  .footer-col h4 { font-size: 12px; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: rgba(255,255,255,0.4); margin-bottom: 1.2rem; }
+  .footer-col ul { list-style: none; display: flex; flex-direction: column; gap: 0.6rem; }
+  .footer-col ul li a { text-decoration: none; font-size: 14px; color: rgba(255,255,255,0.65); transition: color 0.2s; }
+  .footer-col ul li a:hover { color: var(--yellow); }
+  .footer-bottom { display: flex; justify-content: space-between; align-items: center; padding-top: 2rem; flex-wrap: wrap; gap: 1rem; }
+  .footer-bottom p { font-size: 12px; color: rgba(255,255,255,0.35); }
+  .footer-socials { display: flex; gap: 0.75rem; }
+  .social-btn { width: 36px; height: 36px; border-radius: 8px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: center; font-size: 14px; text-decoration: none; color: rgba(255,255,255,0.6); transition: background 0.2s, color 0.2s; }
+  .social-btn:hover { background: var(--green); color: var(--white); }
+  .footer-logo { display: flex; align-items: center; gap: 10px; text-decoration: none; margin-bottom: 0.5rem; }
+  .footer-logo .logo-mark { background: var(--green); }
+  .footer-logo .logo-text span:first-child { color: #6ee883; }
+  .footer-logo .logo-text span:last-child { color: rgba(255,255,255,0.4); }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+  .reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.6s ease, transform 0.6s ease; }
+  .reveal.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) { .mvv-grid, .contact-grid, .footer-top { grid-template-columns: 1fr; gap: 2rem; } .form-row { grid-template-columns: 1fr; } .nav-links { display: none; } .hamburger { display: flex; } }
+  @media (max-width: 600px) { section { padding: 4rem 5%; } .hero-stats { gap: 1.5rem; } .programs-header { flex-direction: column; align-items: flex-start; } }
+</style>
+</head>
+<body>
+
+<nav id="navbar">
+  <a href="index.html" class="nav-logo">
+    <div class="logo-mark"><svg viewBox="0 0 26 26" fill="none"><text x="1" y="20" font-family="sans-serif" font-weight="900" font-size="16" fill="#F9D503">YYE</text></svg></div>
+    <div class="logo-text"><span>YYE</span><span>Yewa Youth Elites</span></div>
+  </a>
+  <ul class="nav-links">
+    <li><a href="index.html" class="active">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="#programs">Programs</a></li>
+    <li><a href="donate.html" class="nav-donate">Donate</a></li>
+    <li><a href="#contact" class="nav-cta">Join Us</a></li>
+  </ul>
+  <button class="hamburger" onclick="toggleMenu()" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="index.html" onclick="closeMenu()">Home</a>
+  <a href="about.html" onclick="closeMenu()">About</a>
+  <a href="#programs" onclick="closeMenu()">Programs</a>
+  <a href="donate.html" onclick="closeMenu()" class="m-donate">Donate 💛</a>
+  <a href="#contact" onclick="closeMenu()" class="m-join">Join Us →</a>
+</div>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-pattern"></div>
+  <div class="hero-accent"></div>
+  <div class="hero-accent2"></div>
+  <div class="hero-content">
+    <div class="hero-badge">Yewa Youth Elites</div>
+    <h1 class="hero-headline">Raising the <em>next generation</em> of Yewa leaders.</h1>
+    <p class="hero-sub">We empower Yewa youths through education, mentorship, and cultural pride — building a generation that is grounded in identity and ready for the world.</p>
+    <div class="hero-btns">
+      <a href="#programs" class="btn-primary">Explore Our Programs</a>
+      <a href="donate.html" class="btn-yellow">Support YYE ♥</a>
+      <a href="about.html" class="btn-outline">About Us</a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><span class="stat-num">4+</span><span class="stat-label">Focus Areas</span></div>
+      <div class="stat-item"><span class="stat-num">7</span><span class="stat-label">Executives</span></div>
+      <div class="stat-item"><span class="stat-num">1</span><span class="stat-label">Shared Mission</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- SNAPSHOT CARDS -->
+<section id="snapshot">
+  <div class="reveal" style="text-align:center; margin-bottom:0.5rem;"><span class="section-tag">What We Do</span></div>
+  <h2 class="section-title reveal" style="text-align:center;">Everything YYE stands for.</h2>
+  <div class="snapshot-grid">
+    <a href="about.html" class="snap-card reveal">
+      <div class="snap-icon">🌍</div>
+      <h3 class="snap-title">Who We Are</h3>
+      <p class="snap-desc">A non-profit movement dedicated to empowering Yewa youths with education, mentorship, and cultural pride.</p>
+      <span class="snap-link">Learn about YYE →</span>
+    </a>
+    <a href="about.html#team" class="snap-card reveal">
+      <div class="snap-icon">👥</div>
+      <h3 class="snap-title">Our Executive Team</h3>
+      <p class="snap-desc">Meet the 7 passionate leaders driving every program and initiative across Yewa communities.</p>
+      <span class="snap-link">Meet the team →</span>
+    </a>
+    <a href="#programs" class="snap-card reveal">
+      <div class="snap-icon">🎓</div>
+      <h3 class="snap-title">Our Programs</h3>
+      <p class="snap-desc">From school outreach to cultural events — our programs are built around real community needs.</p>
+      <span class="snap-link">See programs →</span>
+    </a>
+    <a href="donate.html" class="snap-card reveal">
+      <div class="snap-icon">💛</div>
+      <h3 class="snap-title">Support Our Work</h3>
+      <p class="snap-desc">Your donation directly funds mentorship, education, and cultural preservation for Yewa youth.</p>
+      <span class="snap-link">Donate now →</span>
+    </a>
+  </div>
+</section>
+
+<!-- PROGRAMS -->
+<section id="programs">
+  <div class="programs-header reveal">
+    <div>
+      <span class="section-tag">Programs & Initiatives</span>
+      <h2 class="section-title">What we do on the ground.</h2>
+    </div>
+    <a href="#contact" class="btn-primary">Get Involved</a>
+  </div>
+  <div class="programs-grid">
+    <div class="program-card featured reveal">
+      <div class="prog-icon">🎓</div>
+      <span class="prog-tag">Education</span>
+      <h3 class="prog-title">Academic Support & Outreach</h3>
+      <p class="prog-desc">School outreach programs, mentorship sessions, and learning initiatives that give Yewa students the guidance they need to excel — from the classroom to their careers.</p>
+    </div>
+    <div class="program-card reveal">
+      <div class="prog-icon">💡</div>
+      <span class="prog-tag">Empowerment</span>
+      <h3 class="prog-title">Skills & Career Development</h3>
+      <p class="prog-desc">Equipping young Yewa people with practical skills, entrepreneurial thinking, and career guidance to help them compete in a modern world.</p>
+    </div>
+    <div class="program-card reveal">
+      <div class="prog-icon">🏺</div>
+      <span class="prog-tag">Culture</span>
+      <h3 class="prog-title">Cultural Promotion & Heritage</h3>
+      <p class="prog-desc">Through events, storytelling, and community engagement, we celebrate and preserve the traditions and identity of the Yewa people for future generations.</p>
+    </div>
+    <div class="program-card dark reveal">
+      <div class="prog-icon">🤝</div>
+      <span class="prog-tag">Community</span>
+      <h3 class="prog-title">Community Development Programs</h3>
+      <p class="prog-desc">Working with schools, local leaders, and partners to design programs that address real challenges and foster unity across Yewa communities.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MISSION / VISION -->
+<section class="mvv">
+  <div style="text-align:center; margin-bottom:0.5rem;"><span class="section-tag">Our Purpose</span></div>
+  <h2 class="section-title reveal" style="color:white; text-align:center; margin-bottom:0;">Driven by mission. Guided by vision.</h2>
+  <div class="mvv-grid reveal">
+    <div class="mvv-card mission">
+      <p class="mvv-label">Our Mission</p>
+      <h3 class="mvv-title">Empowering Yewa youths through education, mentorship, and culture.</h3>
+      <p class="mvv-body">We build capacity, preserve cultural values, and create pathways for young Yewa people to thrive — both within their communities and in the wider world.</p>
+    </div>
+    <div class="mvv-card vision">
+      <p class="mvv-label">Our Vision</p>
+      <h3 class="mvv-title">A generation of Yewa youths who are grounded, equipped, and globally competitive.</h3>
+      <p class="mvv-body">We see a future where every Yewa youth has the identity, knowledge, and opportunity to lead a meaningful, impactful life.</p>
+    </div>
+  </div>
+</section>
+
+<!-- DONATE CTA STRIP -->
+<section id="donate-cta">
+  <div class="donate-cta-inner reveal">
+    <div>
+      <h2>Your support builds the future of Yewa youth.</h2>
+      <p>Every contribution — large or small — funds real programs that change real lives in Yewa communities.</p>
+    </div>
+    <a href="donate.html" class="btn-dark">Donate Now →</a>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div style="text-align:center; margin-bottom:3rem;" class="reveal">
+    <span class="section-tag">Get In Touch</span>
+    <h2 class="section-title">Join the YYE movement.</h2>
+    <p class="section-sub" style="margin:0 auto;">Whether you're a student, mentor, partner, or simply someone who cares about the Yewa community — there is a place for you here.</p>
+  </div>
+  <div class="contact-grid">
+    <div class="contact-info reveal">
+      <h3>We'd love to hear from you.</h3>
+      <p>Reach out through any of the channels below, or fill in the form and the YYE team will get back to you.</p>
+      <div class="contact-links">
+        <a href="mailto:info@yewayouthelites.org" class="contact-link"><div class="contact-link-icon">✉️</div>info@yewayouthelites.org</a>
+        <a href="#" class="contact-link"><div class="contact-link-icon">📸</div>@YewaYouthElites on Instagram</a>
+        <a href="#" class="contact-link"><div class="contact-link-icon">🐦</div>@YYE on X (Twitter)</a>
+        <a href="#" class="contact-link"><div class="contact-link-icon">📘</div>Yewa Youth Elites on Facebook</a>
+      </div>
+    </div>
+    <div class="contact-form reveal">
+      <h3 class="form-title">Send us a message</h3>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" placeholder="e.g. Adebayo"></div>
+        <div class="form-group"><label>Last Name</label><input type="text" placeholder="e.g. Okafor"></div>
+      </div>
+      <div class="form-group"><label>Email Address</label><input type="email" placeholder="you@example.com"></div>
+      <div class="form-group"><label>I am a...</label><select><option>Student</option><option>Mentor / Professional</option><option>Community Member</option><option>Potential Partner / Sponsor</option><option>Other</option></select></div>
+      <div class="form-group"><label>Message</label><textarea placeholder="Tell us how you'd like to get involved..."></textarea></div>
+      <button class="form-submit" id="contactBtn">Send Message →</button>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <a href="index.html" class="footer-logo">
+        <div class="logo-mark"><svg viewBox="0 0 26 26" fill="none"><text x="1" y="20" font-family="sans-serif" font-weight="900" font-size="16" fill="#F9D503">YYE</text></svg></div>
+        <div class="logo-text"><span>YYE</span><span>Yewa Youth Elites</span></div>
+      </a>
+      <p>A movement committed to shaping the future of Yewa youths through education, mentorship, and cultural pride.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigate</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About YYE</a></li>
+        <li><a href="about.html#team">Executive Team</a></li>
+        <li><a href="#programs">Programs</a></li>
+        <li><a href="donate.html">Donate</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Focus Areas</h4>
+      <ul>
+        <li><a href="#programs">Education & Mentorship</a></li>
+        <li><a href="#programs">Youth Empowerment</a></li>
+        <li><a href="#programs">Cultural Promotion</a></li>
+        <li><a href="#programs">Community Development</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>© 2025 Yewa Youth Elites. All rights reserved.</p>
+    <div class="footer-socials">
+      <a href="#" class="social-btn" aria-label="Instagram">ig</a>
+      <a href="#" class="social-btn" aria-label="Twitter">𝕏</a>
+      <a href="#" class="social-btn" aria-label="Facebook">fb</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => navbar.classList.toggle('scrolled', window.scrollY > 20));
+  function toggleMenu() { document.getElementById('mobileMenu').classList.toggle('open'); }
+  function closeMenu() { document.getElementById('mobileMenu').classList.remove('open'); }
+  const reveals = document.querySelectorAll('.reveal');
+  const obs = new IntersectionObserver((entries) => { entries.forEach((e,i) => { if(e.isIntersecting){ setTimeout(()=>e.target.classList.add('visible'),i*80); obs.unobserve(e.target); } }); }, { threshold: 0.08 });
+  reveals.forEach(el => obs.observe(el));
+  document.getElementById('contactBtn').addEventListener('click', () => alert('Thank you for reaching out! The YYE team will be in touch soon.'));
+</script>
+</body>
+</html>

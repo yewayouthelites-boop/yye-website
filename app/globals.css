@@ -1,0 +1,140 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base ──────────────────────────────────────────────────────────── */
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    /* font-sans resolves to "Host Grotesk" via tailwind.config.ts */
+    @apply font-sans text-yye-dark bg-white overflow-x-hidden;
+  }
+}
+
+/* ─── Reusable component classes ────────────────────────────────────── */
+@layer components {
+
+  /* Section label pill */
+  .section-tag {
+    @apply inline-block text-[11px] font-bold tracking-[0.12em] uppercase
+           text-yye-green bg-yye-green/[0.08] px-[14px] py-[5px] rounded-full mb-4;
+  }
+
+  /* Section headings */
+  .section-title {
+    @apply font-extrabold leading-[1.15] tracking-[-0.02em] mb-4 text-yye-dark;
+    font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+  }
+
+  .section-sub {
+    @apply text-base text-yye-gray leading-[1.7] max-w-[540px];
+  }
+
+  /* ── Buttons ── */
+  .btn-primary {
+    @apply inline-block bg-yye-green text-white px-8 py-[0.9rem] rounded-[10px]
+           font-bold text-[15px] no-underline
+           transition-all duration-200 hover:bg-yye-green-dark hover:-translate-y-px;
+  }
+
+  .btn-yellow {
+    @apply inline-block bg-yye-yellow text-yye-dark px-8 py-[0.9rem] rounded-[10px]
+           font-bold text-[15px] no-underline
+           transition-all duration-200 hover:bg-yye-yellow-dark hover:-translate-y-px;
+  }
+
+  .btn-outline {
+    @apply inline-block bg-transparent text-white border border-white/30
+           px-8 py-[0.9rem] rounded-[10px] font-semibold text-[15px] no-underline
+           transition-all duration-200 hover:border-yye-yellow hover:text-yye-yellow hover:-translate-y-px;
+  }
+
+  .btn-dark {
+    @apply inline-block bg-yye-dark text-white px-[2.2rem] py-4 rounded-[10px]
+           font-bold text-[15px] no-underline whitespace-nowrap
+           transition-all duration-200 hover:opacity-85 hover:-translate-y-px;
+  }
+
+  /* ── Logo mark ── */
+  .logo-mark {
+    @apply w-[42px] h-[42px] bg-yye-green rounded-[10px]
+           flex items-center justify-center shrink-0;
+  }
+
+  /* ── Nav pill buttons ── */
+  .nav-donate-btn {
+    @apply bg-yye-yellow text-yye-dark px-[1.3rem] py-[0.55rem]
+           rounded-[8px] font-bold text-sm no-underline
+           transition-colors duration-200 hover:bg-yye-yellow-dark;
+  }
+
+  .nav-cta-btn {
+    @apply bg-yye-green text-white px-[1.3rem] py-[0.55rem]
+           rounded-[8px] font-bold text-sm no-underline
+           transition-colors duration-200 hover:bg-yye-green-dark;
+  }
+
+  /* ── Form controls ── */
+  .form-input {
+    @apply w-full px-4 py-3 rounded-[10px] border border-yye-green/[0.15]
+           font-sans text-sm text-yye-dark bg-white outline-none
+           transition-colors duration-200 focus:border-yye-green;
+  }
+
+  .form-label {
+    @apply block text-[12px] font-semibold text-yye-gray uppercase tracking-[0.05em];
+  }
+
+  /* ── Contact link row ── */
+  .contact-link {
+    @apply flex items-center gap-[0.9rem] px-[1.2rem] py-[0.9rem]
+           bg-white rounded-[12px] border border-yye-green/[0.1]
+           no-underline text-yye-dark text-sm font-medium
+           transition-all duration-200 hover:border-yye-green hover:translate-x-1;
+  }
+
+  .contact-link-icon {
+    @apply w-9 h-9 bg-yye-green/[0.08] rounded-[8px]
+           flex items-center justify-center text-[18px] shrink-0;
+  }
+
+  /* ── Social buttons ── */
+  .social-btn {
+    @apply w-9 h-9 rounded-[8px] bg-white/[0.06] border border-white/[0.1]
+           flex items-center justify-center text-sm no-underline text-white/60
+           transition-all duration-200 hover:bg-yye-green hover:text-white;
+  }
+}
+
+/* ─── Scroll-reveal ─────────────────────────────────────────────────── */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ─── YYE brand pattern background ──────────────────────────────────── */
+/* Apply to any section's wrapper div to get the brand monogram texture  */
+.yye-pattern {
+  position: relative;
+}
+
+.yye-pattern::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url('/yye-icon.svg');
+  background-repeat: repeat;
+  background-size: 110px auto;
+  opacity: 0.055;         /* subtle — increases depth without dominating */
+  pointer-events: none;
+  z-index: 0;
+}
