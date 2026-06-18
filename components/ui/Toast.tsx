@@ -1,5 +1,7 @@
 'use client'
 
+import Portal from './Portal'
+
 type ToastVariant = 'error' | 'success'
 
 type ToastProps = {
@@ -29,6 +31,7 @@ export default function Toast({ message, variant = 'error', onClose }: ToastProp
   const styles = variantStyles[variant]
 
   return (
+    <Portal>
     <div className="fixed right-4 top-4 z-[130] w-[calc(100vw-2rem)] max-w-[380px]" role="alert">
       <div className={`flex items-start gap-3 rounded-[12px] border ${styles.border} ${styles.bg} p-4 shadow-card-hover`}>
         <span className={`mt-1 h-2.5 w-2.5 shrink-0 rounded-full ${styles.dot}`} />
@@ -46,5 +49,6 @@ export default function Toast({ message, variant = 'error', onClose }: ToastProp
         </button>
       </div>
     </div>
+    </Portal>
   )
 }
