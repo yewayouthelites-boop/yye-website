@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server'
+import { validateVerifiedTransaction } from '../paystack-utils'
 
 const PAYSTACK_VERIFY_ENDPOINT = 'https://api.paystack.co/transaction/verify'
 
@@ -51,37 +52,17 @@ export async function POST(request: Request) {
   }
 
   const transaction = result.data
-  const expectedAmountKobo = Number(transaction?.metadata?.expected_amount_kobo)
-  const paidAmountKobo = Number(transaction?.amount)
-  const currency = String(transaction?.currency || '')
-  const status = String(transaction?.status || '')
+  const verified = validateVerifiedTransaction(transaction)
 
-  if (status !== 'success') {
-    return NextResponse.json(
-      { error: 'Payment was not successful.' },
-      { status: 400 },
-    )
-  }
-
-  if (currency !== 'NGN') {
-    return NextResponse.json(
-      { error: 'Payment currency is invalid.' },
-      { status: 400 },
-    )
-  }
-
-  if (!expectedAmountKobo || paidAmountKobo !== expectedAmountKobo) {
-    return NextResponse.json(
-      { error: 'Payment amount could not be verified.' },
-      { status: 400 },
-    )
+  if (!verified.ok) {
+    return NextResponse.json({ error: verified.error }, { status: 400 })
   }
 
   return NextResponse.json({
     paid: true,
     reference: transaction.reference,
-    amount: paidAmountKobo / 100,
-    amountKobo: paidAmountKobo,
+    amount: verified.amountKobo / 100,
+    amountKobo: verified.amountKobo,
     email: transaction.customer?.email || '',
   })
 }

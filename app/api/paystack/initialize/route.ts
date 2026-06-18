@@ -1,27 +1,11 @@
 import { NextResponse } from 'next/server'
+import {
+  generateDonationReference,
+  validateInitializePayload,
+  type InitializePayload,
+} from '../paystack-utils'
 
 const PAYSTACK_INITIALIZE_ENDPOINT = 'https://api.paystack.co/transaction/initialize'
-const MIN_DONATION_NAIRA = 1000
-
-type InitializePayload = {
-  amount?: string | number
-  firstName?: string
-  lastName?: string
-  email?: string
-  phone?: string
-  message?: string
-}
-
-function isValidEmail(email: string) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
-}
-
-function generateDonationReference() {
-  const timestamp = Date.now()
-  const random = Math.random().toString(36).slice(2, 10).toUpperCase()
-
-  return `YYE-donation-${timestamp}-${random}`
-}
 
 export async function POST(request: Request) {
   const secretKey = process.env.PAYSTACK_SECRET_KEY
@@ -41,36 +25,22 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: 'Invalid request.' }, { status: 400 })
   }
 
-  const amount = Number(payload.amount)
-  const firstName = String(payload.firstName || '').trim()
-  const lastName = String(payload.lastName || '').trim()
-  const email = String(payload.email || '').trim()
-  const phone = String(payload.phone || '').trim()
-  const message = String(payload.message || '').trim()
+  const validated = validateInitializePayload(payload)
 
-  if (!Number.isFinite(amount) || amount < MIN_DONATION_NAIRA) {
-    return NextResponse.json(
-      { error: `Donation amount must be at least ₦${MIN_DONATION_NAIRA.toLocaleString()}.` },
-      { status: 400 },
-    )
+  if (!validated.ok) {
+    return NextResponse.json({ error: validated.error }, { status: 400 })
   }
 
-  if (!firstName || !lastName) {
-    return NextResponse.json(
-      { error: 'Please enter your first and last name.' },
-      { status: 400 },
-    )
-  }
-
-  if (!email || !isValidEmail(email)) {
-    return NextResponse.json(
-      { error: 'Please enter a valid email address.' },
-      { status: 400 },
-    )
-  }
-
-  const amountKobo = Math.round(amount * 100)
-  const fullName = `${firstName} ${lastName}`.trim()
+  const {
+    amount,
+    amountKobo,
+    firstName,
+    lastName,
+    fullName,
+    email,
+    phone,
+    message,
+  } = validated.value
   const reference = generateDonationReference()
 
   const response = await fetch(PAYSTACK_INITIALIZE_ENDPOINT, {
