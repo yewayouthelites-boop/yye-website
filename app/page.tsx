@@ -6,6 +6,7 @@ import {
   HiBuildingLibrary,
   HiUsers,
   HiEnvelope,
+  HiHeart,
 } from 'react-icons/hi2'
 import { FaInstagram, FaFacebook } from 'react-icons/fa6'
 import RevealWrapper from '@/components/RevealWrapper'
@@ -63,7 +64,10 @@ export default function HomePage() {
           {/* CTAs */}
           <div className="flex gap-4 flex-wrap animate-fade-up-3">
             <Link href="#programs" className="btn-primary">Explore Our Programs</Link>
-            <Link href="/donate" className="btn-yellow">Support YYE ♥</Link>
+            <Link href="/donate" className="btn-yellow inline-flex items-center gap-2">
+              Support YYE
+              <HiHeart className="text-red-600" size={18} aria-hidden="true" />
+            </Link>
           </div>
         </div>
       </section>
