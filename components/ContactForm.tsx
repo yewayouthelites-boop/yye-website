@@ -147,16 +147,15 @@ export default function ContactForm() {
 
       {status === "success" && (
         <div
-          className="fixed inset-0 z-[100] flex min-h-screen items-center justify-center bg-yye-light px-5 py-8"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-yye-dark/65 px-4 py-8 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-labelledby="contact-success-title"
         >
-          <div className="absolute inset-0 opacity-[0.05] yye-pattern" />
-          <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-[760px] flex-col items-center justify-center text-center">
-            <div className="mb-7 flex h-24 w-24 items-center justify-center rounded-full bg-yye-green/[0.1] text-yye-green">
+          <div className="w-full max-w-[430px] rounded-[20px] bg-white p-8 text-center shadow-card-hover">
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-yye-green/[0.1] text-yye-green">
               <svg
-                className="h-12 w-12"
+                className="h-9 w-9"
                 fill="none"
                 viewBox="0 0 24 24"
                 stroke="currentColor"
@@ -171,14 +170,14 @@ export default function ContactForm() {
             </div>
             <h3
               id="contact-success-title"
-              className="mb-3 text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] text-yye-dark"
+              className="mb-2 text-xl font-extrabold text-yye-dark"
             >
               Message sent
             </h3>
-            <p className="mb-8 max-w-[520px] text-base leading-[1.8] text-yye-gray">
+            <p className="mb-7 text-sm leading-[1.7] text-yye-gray">
               Thank you for reaching out. The YYE team will be in touch soon.
             </p>
-            <Button type="button" onClick={() => setStatus("idle")}>
+            <Button type="button" fullWidth onClick={() => setStatus("idle")}>
               Close
             </Button>
           </div>

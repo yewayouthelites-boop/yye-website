@@ -2,7 +2,9 @@ import { NextResponse } from 'next/server'
 
 const RESEND_EMAIL_ENDPOINT = 'https://api.resend.com/emails'
 const DEFAULT_TO_EMAIL = 'yewayouthelites@gmail.com'
-const DEFAULT_FROM_EMAIL = 'YYE Website <onboarding@resend.dev>'
+const DEFAULT_FROM_EMAIL = 'Yewa Youth Elites <hello@yewayouthelites.org>'
+const DEFAULT_REPLY_TO_EMAIL = 'yewayouthelites@gmail.com'
+
 type ContactPayload = {
   firstName?: string
   lastName?: string
@@ -71,6 +73,7 @@ export async function POST(request: Request) {
   const fullName = `${firstName} ${lastName}`.trim()
   const toEmail = process.env.CONTACT_TO_EMAIL || DEFAULT_TO_EMAIL
   const fromEmail = process.env.CONTACT_FROM_EMAIL || DEFAULT_FROM_EMAIL
+  const replyToEmail = process.env.CONTACT_REPLY_TO_EMAIL || DEFAULT_REPLY_TO_EMAIL
   const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || process.env.SITE_URL || '').replace(/\/$/, '')
   const logoUrl = siteUrl ? `${siteUrl}/yye-wordmark-green.svg` : ''
   const textureUrl = siteUrl ? `${siteUrl}/yye-texture.jpeg` : ''
@@ -174,7 +177,69 @@ export async function POST(request: Request) {
     </html>
   `
 
-  const response = await fetch(RESEND_EMAIL_ENDPOINT, {
+  const autoReplySubject = 'We received your message'
+  const autoReplyText = [
+    `Hello ${firstName},`,
+    '',
+    'Thank you for contacting Yewa Youth Elites.',
+    'We have received your message and the YYE team will be in touch soon.',
+    '',
+    'Your message:',
+    message,
+    '',
+    'Yewa Youth Elites',
+  ].join('\n')
+
+  const autoReplyHtml = `
+    <!doctype html>
+    <html>
+      <body style="margin:0;padding:0;background:#f4f7f1;font-family:Arial,Helvetica,sans-serif;color:#1E1E1E;">
+        <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="background:#f4f7f1;padding:28px 12px;">
+          <tr>
+            <td align="center">
+              <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="max-width:620px;background:#ffffff;border-radius:18px;overflow:hidden;border:1px solid #e2eadf;">
+                <tr>
+                  <td
+                    style="padding:28px;background-color:#1E1E1E;${textureUrl ? `background-image:linear-gradient(90deg,rgba(30,30,30,0.95),rgba(30,30,30,0.80)),url('${textureUrl}');background-size:cover;background-position:center;` : ''}"
+                  >
+                    ${logoUrl ? `<img src="${logoUrl}" width="160" alt="Yewa Youth Elites" style="display:block;height:auto;margin:0 0 22px 0;background:#ffffff;border-radius:10px;padding:8px;" />` : ''}
+                    <p style="margin:0 0 8px 0;color:#d4a300;font-size:12px;font-weight:700;letter-spacing:1.6px;text-transform:uppercase;">Message Received</p>
+                    <h1 style="margin:0;color:#ffffff;font-size:28px;line-height:1.2;font-weight:800;">Thank you for reaching out</h1>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:30px;">
+                    <p style="margin:0 0 16px 0;color:#1E1E1E;font-size:16px;line-height:1.7;">Hello ${escapeHtml(firstName)},</p>
+                    <p style="margin:0 0 18px 0;color:#4f5a4d;font-size:15px;line-height:1.8;">
+                      Thank you for contacting Yewa Youth Elites. We have received your message and the YYE team will be in touch soon.
+                    </p>
+                    <table role="presentation" cellpadding="0" cellspacing="0" width="100%" style="margin:22px 0;">
+                      <tr>
+                        <td style="background:#f7faf5;border-left:4px solid #0c7d21;border-radius:12px;padding:18px;">
+                          <p style="margin:0 0 8px 0;color:#0c7d21;font-size:12px;font-weight:800;letter-spacing:1px;text-transform:uppercase;">Your Message</p>
+                          <p style="margin:0;color:#1E1E1E;font-size:14px;line-height:1.7;white-space:pre-wrap;">${escapeHtml(message)}</p>
+                        </td>
+                      </tr>
+                    </table>
+                    <p style="margin:0;color:#6b6b6b;font-size:13px;line-height:1.7;">
+                      If you need to add anything else, reply to this email and it will go to the YYE team.
+                    </p>
+                  </td>
+                </tr>
+                <tr>
+                  <td style="padding:18px 28px;background:#1E1E1E;text-align:center;">
+                    <p style="margin:0;color:rgba(255,255,255,0.58);font-size:12px;line-height:1.6;">Yewa Youth Elites</p>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </table>
+      </body>
+    </html>
+  `
+
+  const notificationPromise = fetch(RESEND_EMAIL_ENDPOINT, {
     method: 'POST',
     headers: {
       Authorization: `Bearer ${apiKey}`,
@@ -190,8 +255,30 @@ export async function POST(request: Request) {
     }),
   })
 
-  if (!response.ok) {
-    const error = await response.json().catch(() => null)
+  const autoReplyPromise = fetch(RESEND_EMAIL_ENDPOINT, {
+    method: 'POST',
+    headers: {
+      Authorization: `Bearer ${apiKey}`,
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: fromEmail,
+      to: [email],
+      reply_to: replyToEmail,
+      subject: autoReplySubject,
+      html: autoReplyHtml,
+      text: autoReplyText,
+    }),
+  })
+
+  const [notificationResponse, autoReplyResponse] = await Promise.all([
+    notificationPromise,
+    autoReplyPromise,
+  ])
+
+  if (!notificationResponse.ok || !autoReplyResponse.ok) {
+    const errorResponse = !notificationResponse.ok ? notificationResponse : autoReplyResponse
+    const error = await errorResponse.json().catch(() => null)
     return NextResponse.json(
       { error: error?.message || 'Unable to send message right now.' },
       { status: 502 },

@@ -312,26 +312,25 @@ export default function DonateForm() {
 
       {status === 'success' && verifiedDonation && (
         <div
-          className="fixed inset-0 z-[100] flex min-h-screen items-center justify-center bg-yye-light px-5 py-8"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-yye-dark/65 px-4 py-8 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-labelledby="donation-success-title"
         >
-          <div className="absolute inset-0 opacity-[0.05] yye-pattern" />
-          <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-[760px] flex-col items-center justify-center text-center">
-            <div className="mb-7 flex h-24 w-24 items-center justify-center rounded-full bg-red-50 text-red-600">
-              <HiHeart size={52} />
+          <div className="w-full max-w-[460px] rounded-[20px] bg-white p-8 text-center shadow-card-hover">
+            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-red-50 text-red-600">
+              <HiHeart size={36} />
             </div>
             <h3
               id="donation-success-title"
-              className="mb-3 text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] text-yye-dark"
+              className="mb-2 text-xl font-extrabold text-yye-dark"
             >
               Donation successful
             </h3>
-            <p className="max-w-[520px] text-base leading-[1.8] text-yye-gray">
+            <p className="text-sm leading-[1.7] text-yye-gray">
               Thank you for supporting YYE. Your payment has been verified.
             </p>
-            <div className="my-8 w-full max-w-[460px] rounded-[16px] bg-white p-5 text-left shadow-card-hover">
+            <div className="my-6 rounded-[14px] bg-yye-light p-4 text-left">
               <div className="flex items-center justify-between gap-4 text-sm">
                 <span className="text-yye-gray">Amount</span>
                 <span className="font-extrabold text-yye-dark">{formatNaira(verifiedDonation.amount)}</span>

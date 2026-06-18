@@ -16,6 +16,13 @@ function isValidEmail(email: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)
 }
 
+function generateDonationReference() {
+  const timestamp = Date.now()
+  const random = Math.random().toString(36).slice(2, 10).toUpperCase()
+
+  return `YYE-donation-${timestamp}-${random}`
+}
+
 export async function POST(request: Request) {
   const secretKey = process.env.PAYSTACK_SECRET_KEY
 
@@ -64,6 +71,7 @@ export async function POST(request: Request) {
 
   const amountKobo = Math.round(amount * 100)
   const fullName = `${firstName} ${lastName}`.trim()
+  const reference = generateDonationReference()
 
   const response = await fetch(PAYSTACK_INITIALIZE_ENDPOINT, {
     method: 'POST',
@@ -74,6 +82,7 @@ export async function POST(request: Request) {
     body: JSON.stringify({
       amount: amountKobo,
       email,
+      reference,
       currency: 'NGN',
       channels: ['card', 'bank', 'ussd', 'qr', 'mobile_money', 'bank_transfer'],
       metadata: {
