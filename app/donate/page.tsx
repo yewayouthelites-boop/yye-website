@@ -34,18 +34,15 @@ export default function DonatePage() {
     <>
       {/* ══ PAGE HERO ════════════════════════════════════════════════ */}
       <div className="relative bg-yye-cream px-[5%] pt-[140px] pb-20 overflow-hidden" style={{ backgroundImage: "url('/yye-icon.svg')", backgroundRepeat: 'repeat', backgroundSize: '90px auto' }}><div className="absolute inset-0 bg-yye-cream/[0.92] pointer-events-none" />
-        <div className="relative z-[2] max-w-[680px]">
-          <p className="text-[12px] font-semibold text-yye-dark/45 tracking-[0.08em] uppercase mb-4">
-            <Link href="/" className="text-yye-dark font-bold no-underline hover:underline">Home</Link>
-            {' '}/ Donate
-          </p>
+        <div className="relative z-[2] max-w-[700px] m-auto text-center">
+          
           <h1
             className="font-extrabold text-yye-dark leading-[1.1] tracking-[-0.02em] mb-4"
             style={{ fontSize: 'clamp(2.4rem, 5vw, 4rem)' }}
           >
             Your generosity changes lives.
           </h1>
-          <p className="text-base text-yye-dark/65 leading-[1.7] max-w-[540px]">
+          <p className="text-base text-yye-dark/65 leading-[1.7] max-w-[540px] mx-auto">
             Every contribution helps us reach more Yewa youths, deliver more programs, and preserve our cultural heritage for future generations. No amount is too small.
           </p>
         </div>

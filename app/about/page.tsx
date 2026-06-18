@@ -63,7 +63,7 @@ export default function AboutPage() {
           style={{ zIndex: 1 }}
         />
 
-        <div className="relative z-[2] max-w-[680px]">
+        <div className="relative z-[2] max-w-[730px] mx-auto text-center">
           <p className="text-[12px] font-semibold text-white/40 tracking-[0.08em] uppercase mb-4">
             <Link
               href="/"
@@ -79,7 +79,7 @@ export default function AboutPage() {
           >
             We are young professionals from Yewa focused on building Yewa.
           </h1>
-          <p className="text-base text-white/65 leading-[1.7] max-w-[540px]">
+          <p className="text-base text-white/65 leading-[1.7] max-w-[540px] mx-auto">
             Yewa Youth Elites is a membership based community strictly by
             invitation built on culture, driven by purpose and committed to
             raising a generation of Yewa youth who are ready to lead.

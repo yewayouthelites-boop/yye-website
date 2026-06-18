@@ -11,6 +11,7 @@ import {
 import { FaInstagram, FaFacebook } from 'react-icons/fa6'
 import RevealWrapper from '@/components/RevealWrapper'
 import ContactForm from '@/components/ContactForm'
+import Image from 'next/image'
 
 export const metadata: Metadata = {
   title: 'Yewa Youth Elites | Raising the Next Generation of Yewa Leaders',
@@ -34,7 +35,7 @@ export default function HomePage() {
         {/* Soft radial glow accents sit above the pattern layer */}
         <div className="absolute top-[-80px] right-[-80px] w-[500px] h-[500px] bg-yye-green opacity-[0.18] rounded-full pointer-events-none blur-3xl" style={{ zIndex: 1 }} />
         <div className="absolute bottom-[-100px] right-[200px] w-[300px] h-[300px] bg-yye-yellow opacity-[0.12] rounded-full pointer-events-none blur-2xl" style={{ zIndex: 1 }} />
-
+<div className=' flex flex-col items-start gap-6 max-w-[700px]'>
         {/* Content above pattern and glow */}
         <div className="relative z-[2] max-w-[700px]">
           {/* Badge */}
@@ -70,6 +71,9 @@ export default function HomePage() {
             </Link>
           </div>
         </div>
+        <Image src="/yye-drummers.jpeg" alt="About Us" layout="fill" objectFit="cover" className=" opacity-5 blur-sm" />
+
+      </div>
       </section>
 
       {/* ══ PROGRAMS ══════════════════════════════════════════════════ */}
