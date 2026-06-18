@@ -3,6 +3,7 @@
 import { useState } from 'react'
 import { HiHeart } from 'react-icons/hi2'
 import { Button } from '@/components/ui/Button'
+import Toast from '@/components/ui/Toast'
 
 const PRESET_AMOUNTS = ['50000', '200000', '500000', '1000000', '5000000']
 const PAYSTACK_SCRIPT_SRC = 'https://js.paystack.co/v2/inline.js'
@@ -289,12 +290,6 @@ export default function DonateForm() {
             />
           </div>
 
-          {status === 'error' && (
-            <p className="rounded-[10px] bg-red-50 px-4 py-3 text-sm font-semibold text-red-600">
-              {errorMessage}
-            </p>
-          )}
-
           <Button type="submit" variant="accent" size="xl" fullWidth className="mt-2" disabled={isBusy}>
             {buttonLabel}
           </Button>
@@ -305,24 +300,38 @@ export default function DonateForm() {
         </form>
       </div>
 
+      {status === 'error' && (
+        <Toast
+          message={errorMessage}
+          onClose={() => {
+            setStatus('idle')
+            setErrorMessage('')
+          }}
+        />
+      )}
+
       {status === 'success' && verifiedDonation && (
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-yye-dark/65 px-4 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex min-h-screen items-center justify-center bg-yye-light px-5 py-8"
           role="dialog"
           aria-modal="true"
           aria-labelledby="donation-success-title"
         >
-          <div className="w-full max-w-[440px] rounded-[20px] bg-white p-8 text-center shadow-card-hover">
-            <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-red-50 text-red-600">
-              <HiHeart size={36} />
+          <div className="absolute inset-0 opacity-[0.05] yye-pattern" />
+          <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-[760px] flex-col items-center justify-center text-center">
+            <div className="mb-7 flex h-24 w-24 items-center justify-center rounded-full bg-red-50 text-red-600">
+              <HiHeart size={52} />
             </div>
-            <h3 id="donation-success-title" className="mb-2 text-xl font-extrabold text-yye-dark">
+            <h3
+              id="donation-success-title"
+              className="mb-3 text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] text-yye-dark"
+            >
               Donation successful
             </h3>
-            <p className="text-sm leading-[1.7] text-yye-gray">
+            <p className="max-w-[520px] text-base leading-[1.8] text-yye-gray">
               Thank you for supporting YYE. Your payment has been verified.
             </p>
-            <div className="my-6 rounded-[14px] bg-yye-light p-4 text-left">
+            <div className="my-8 w-full max-w-[460px] rounded-[16px] bg-white p-5 text-left shadow-card-hover">
               <div className="flex items-center justify-between gap-4 text-sm">
                 <span className="text-yye-gray">Amount</span>
                 <span className="font-extrabold text-yye-dark">{formatNaira(verifiedDonation.amount)}</span>

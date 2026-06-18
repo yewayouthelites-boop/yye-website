@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Input } from "@/components/ui/Input";
 import Select from "@/components/ui/Select";
 import { Button } from "@/components/ui/Button";
-import { form } from "framer-motion/m";
+import Toast from "@/components/ui/Toast";
 
 const ROLE_OPTIONS = [
   { label: "Student", value: "student" },
@@ -26,7 +26,7 @@ export default function ContactForm() {
     e.preventDefault();
     setStatus("sending");
     setErrorMessage("");
-const form = e.currentTarget;
+    const form = e.currentTarget;
     const formData = new FormData(form);
     const payload = {
       firstName: String(formData.get("firstName") || "").trim(),
@@ -45,8 +45,6 @@ const form = e.currentTarget;
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(payload),
       });
-      console.log("API response status:", response);
-
       if (!response.ok) {
         const data = await response.json().catch(() => null);
         throw new Error(data?.error || "Unable to send message.");
@@ -126,51 +124,6 @@ const form = e.currentTarget;
           />
         </div>
 
-        {status === "success" && (
-          <div
-            className="fixed inset-0 z-[100] flex items-center justify-center bg-yye-dark/65 px-4 backdrop-blur-sm"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="contact-success-title"
-          >
-            <div className="w-full max-w-[420px] rounded-[20px] bg-white p-8 text-center shadow-card-hover">
-              <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-full bg-yye-green/[0.1] text-yye-green">
-                <svg
-                  className="h-9 w-9"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                  strokeWidth={2.4}
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    d="M5 13l4 4L19 7"
-                  />
-                </svg>
-              </div>
-              <h3
-                id="contact-success-title"
-                className="mb-2 text-xl font-extrabold text-yye-dark"
-              >
-                Message sent
-              </h3>
-              <p className="mb-7 text-sm leading-[1.7] text-yye-gray">
-                Thank you for reaching out. The YYE team will be in touch soon.
-              </p>
-              <Button type="button" fullWidth onClick={() => setStatus("idle")}>
-                Close
-              </Button>
-            </div>
-          </div>
-        )}
-
-        {status === "error" && (
-          <p className="rounded-[10px] bg-red-50 px-4 py-3 text-sm font-semibold text-red-600">
-            {errorMessage}
-          </p>
-        )}
-
         <Button
           iconRight
           type="submit"
@@ -181,6 +134,56 @@ const form = e.currentTarget;
           {status === "sending" ? "Sending..." : "Send Message"}
         </Button>
       </form>
+
+      {status === "error" && (
+        <Toast
+          message={errorMessage}
+          onClose={() => {
+            setStatus("idle");
+            setErrorMessage("");
+          }}
+        />
+      )}
+
+      {status === "success" && (
+        <div
+          className="fixed inset-0 z-[100] flex min-h-screen items-center justify-center bg-yye-light px-5 py-8"
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="contact-success-title"
+        >
+          <div className="absolute inset-0 opacity-[0.05] yye-pattern" />
+          <div className="relative mx-auto flex min-h-[calc(100vh-4rem)] w-full max-w-[760px] flex-col items-center justify-center text-center">
+            <div className="mb-7 flex h-24 w-24 items-center justify-center rounded-full bg-yye-green/[0.1] text-yye-green">
+              <svg
+                className="h-12 w-12"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2.4}
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  d="M5 13l4 4L19 7"
+                />
+              </svg>
+            </div>
+            <h3
+              id="contact-success-title"
+              className="mb-3 text-[clamp(2rem,5vw,4rem)] font-extrabold leading-[1.05] text-yye-dark"
+            >
+              Message sent
+            </h3>
+            <p className="mb-8 max-w-[520px] text-base leading-[1.8] text-yye-gray">
+              Thank you for reaching out. The YYE team will be in touch soon.
+            </p>
+            <Button type="button" onClick={() => setStatus("idle")}>
+              Close
+            </Button>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
