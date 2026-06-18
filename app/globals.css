@@ -134,7 +134,7 @@
   background-image: url('/yye-icon.svg');
   background-repeat: repeat;
   background-size: 110px auto;
-  opacity: 0.055;         /* subtle — increases depth without dominating */
+  opacity: 0.055;         /* subtle, increases depth without dominating */
   pointer-events: none;
   z-index: 0;
 }

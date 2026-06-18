@@ -14,15 +14,15 @@ export const metadata: Metadata = {
     apple: '/favicon.svg',
   },
   title: {
-    template: '%s — Yèwà Youth Elites',
-    default: 'Yèwà Youth Elites — Raising the Next Generation of Yèwà Leaders',
+    template: '%s | Yewa Youth Elites',
+    default: 'Yewa Youth Elites | Raising the Next Generation of Yewa Leaders',
   },
   description:
-    'A non-profit movement dedicated to empowering Yèwà youths with education, mentorship, and cultural pride — building a generation grounded in identity and ready for the world.',
-  keywords: ['Yèwà', 'youth', 'empowerment', 'education', 'mentorship', 'Nigeria', 'culture','ogunstate','club','elite'],
+    'A referral based community of young professionals from Yewa committed to inspire, empower and create opportunities for youths in Yewa to thrive.',
+  keywords: ['Yewa', 'youth', 'empowerment', 'education', 'mentorship', 'Nigeria', 'culture','ogunstate','club','elite'],
   openGraph: {
-    title: 'Yèwà Youth Elites',
-    description: 'Raising the next generation of Yèwà leaders.',
+    title: 'Yewa Youth Elites',
+    description: 'Raising the next generation of Yewa leaders.',
     type: 'website',
   },
 }
@@ -33,7 +33,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       <head>
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="" />
-        {/* Host Grotesk — brand typeface: 300 Light · 400 Regular · 500 Medium · 700 Bold · 800 ExtraBold */}
+        {/* Host Grotesk brand typeface: 300 Light · 400 Regular · 500 Medium · 700 Bold · 800 ExtraBold */}
         <link
           href="https://fonts.googleapis.com/css2?family=Host+Grotesk:wght@300;400;500;700;800&display=swap"
           rel="stylesheet"

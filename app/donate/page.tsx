@@ -11,26 +11,24 @@ import DonateForm from '@/components/DonateForm'
 
 export const metadata: Metadata = {
   title: 'Donate',
-  description: 'Support Yèwà Youth Elites. Every contribution helps us reach more Yèwà youths, deliver more programs, and preserve our cultural heritage.',
+  description: 'Support Yewa Youth Elites. Every contribution helps us reach more Yewa youths, deliver more programs, and preserve our cultural heritage.',
 }
 
-/* ── Data ────────────────────────────────────────────────────────────── */
 const impactTiers = [
-  { amount: '₦5,000', desc: 'Provides learning materials for one student for a full term' },
-  { amount: '₦10,000', desc: 'Covers transport and logistics for a school outreach visit' },
-  { amount: '₦20,000', desc: 'Sponsors one youth to attend a skills development workshop' },
-  { amount: '₦50,000', desc: 'Funds a full community outreach session in a local school' },
-  { amount: '₦100,000+', desc: 'Powers a cultural event or mentorship program from start to finish' },
+  { amount: '₦50,000', desc: 'Provides learning materials for students during outreach' },
+  { amount: '₦200,000', desc: 'Covers transport and logistics for a school outreach visit' },
+  { amount: '₦500,000', desc: 'Sponsor a skill development workshop' },
+  { amount: '₦1,000,000', desc: 'Funds a full community outreach session in a local school' },
+  { amount: '₦5,000,000', desc: 'Powers a cultural event or mentorship program from start to finish' },
 ]
 
 const wayCards = [
-  { icon: <HiAcademicCap size={40} />,    title: 'Fund Education',   desc: 'Support academic materials, school visits, and mentorship programs that help Yèwà students succeed and stay in school.' },
+  { icon: <HiAcademicCap size={40} />,    title: 'Fund Education',   desc: 'Support academic materials, school visits, and mentorship programs that help Yewa students succeed and stay in school.' },
   { icon: <HiGlobeAlt size={40} />,       title: 'Empower Youth',    desc: 'Fund skills workshops, career guidance sessions, and opportunities that prepare youth for a competitive, modern world.' },
-  { icon: <HiBuildingLibrary size={40} />,title: 'Preserve Culture', desc: 'Help us organise cultural events and heritage initiatives that keep the Yèwà identity alive and celebrated for generations.' },
-  { icon: <HiUsers size={40} />,          title: 'Become a Partner', desc: 'Organisations and businesses can partner with YYE to co-sponsor programs and maximise community impact across Yèwà.' },
+  { icon: <HiBuildingLibrary size={40} />,title: 'Preserve Culture', desc: 'Help us organise cultural events and heritage initiatives that keep the Yewa identity alive and celebrated for generations.' },
+  { icon: <HiUsers size={40} />,          title: 'Become a Partner', desc: 'Organisations and businesses can partner with YYE to co-sponsor programs and maximise community impact across Yewa.' },
 ]
 
-/* ── Page ────────────────────────────────────────────────────────────── */
 export default function DonatePage() {
   return (
     <>
@@ -48,7 +46,7 @@ export default function DonatePage() {
             Your generosity changes lives.
           </h1>
           <p className="text-base text-yye-dark/65 leading-[1.7] max-w-[540px]">
-            Every contribution helps us reach more Yèwà youths, deliver more programs, and preserve our cultural heritage for future generations. No amount is too small.
+            Every contribution helps us reach more Yewa youths, deliver more programs, and preserve our cultural heritage for future generations. No amount is too small.
           </p>
         </div>
       </div>
@@ -86,7 +84,7 @@ export default function DonatePage() {
 
         <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-12 items-start">
 
-          {/* Donate form — client component */}
+          {/* Donate form client component */}
           <RevealWrapper>
             <DonateForm />
           </RevealWrapper>
@@ -102,9 +100,9 @@ export default function DonatePage() {
                   Prefer to pay directly to our account? Transfer and send us your receipt.
                 </p>
                 {[
-                  { label: 'Account Name', value: 'Yèwà Youth Elites' },
-                  { label: 'Account Number', value: '— Add account no. —' },
-                  { label: 'Bank', value: '— Add bank name —' },
+                  { label: 'Account Name', value: 'Yewa Youth Elites' },
+                  { label: 'Account Number', value: 'Account details coming soon' },
+                  { label: 'Bank', value: 'Bank details coming soon' },
                 ].map(({ label, value }) => (
                   <div
                     key={label}
@@ -116,7 +114,7 @@ export default function DonatePage() {
                 ))}
                 <p className="text-[12px] text-yye-gray mt-3 leading-[1.6]">
                   After transferring, please email{' '}
-                  <strong>info@yewayouthelites.org</strong>{' '}
+                  <strong>yewayouthelites@gmail.com</strong>{' '}
                   with your full name and amount donated.
                 </p>
               </div>
@@ -126,12 +124,12 @@ export default function DonatePage() {
             <RevealWrapper delay={80}>
               <div className="bg-yye-dark rounded-[20px] p-8">
                 <h3 className="text-base font-extrabold text-yye-yellow mb-5 leading-[1.3]">
-                  Your money goes directly to Yèwà youth.
+                  Your money goes directly to Yewa youth.
                 </h3>
                 {[
                   '100% of donations support YYE programs and community initiatives',
                   'Donors receive updates on how their contributions are being used',
-                  'All gifts — large or small — make a real difference in young lives',
+                  'All gifts, large or small, make a real difference in young lives',
                   'YYE is a registered non-profit committed to transparency and accountability',
                 ].map((text) => (
                   <div key={text} className="flex gap-3 items-start mb-3">
@@ -151,7 +149,7 @@ export default function DonatePage() {
           <span className="section-tag">Other Ways to Help</span>
           <h2 className="section-title text-center">There is more than one way to give.</h2>
           <p className="section-sub mx-auto text-center">
-            Whether through money, time, or skills — every form of support moves YYE&apos;s mission forward.
+            Whether through money, time, or skills, every form of support moves YYE&apos;s mission forward.
           </p>
         </RevealWrapper>
 

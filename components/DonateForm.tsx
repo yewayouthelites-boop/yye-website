@@ -4,13 +4,13 @@ import { useState } from 'react'
 import { HiHeart } from 'react-icons/hi2'
 import { Button } from '@/components/ui/Button'
 
-const PRESET_AMOUNTS = ['5000', '10000', '20000', '50000', '100000']
+const PRESET_AMOUNTS = ['50000', '200000', '500000', '1000000', '5000000']
 const FREQUENCIES = ['One-time', 'Monthly', 'Annually']
 
 export default function DonateForm() {
   const [frequency, setFrequency] = useState('One-time')
-  const [selectedAmount, setSelectedAmount] = useState('10000')
-  const [customAmount, setCustomAmount] = useState('10000')
+  const [selectedAmount, setSelectedAmount] = useState('50000')
+  const [customAmount, setCustomAmount] = useState('50000')
   const [submitted, setSubmitted] = useState(false)
 
   const handleAmountSelect = (val: string) => {

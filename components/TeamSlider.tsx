@@ -48,7 +48,7 @@ const slideVariants = {
    AFRICAN ART ELEMENTS
    ══════════════════════════════════════════════════════════════════════ */
 
-/** Diamond lattice — ubiquitous in West/Central African textile weaving */
+/** Diamond lattice - ubiquitous in West/Central African textile weaving */
 export function DiamondLattice() {
   return (
     <svg className="absolute inset-0 w-full h-full" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
@@ -80,7 +80,7 @@ export function DiamondLattice() {
 
 /**
  * Adinkrahene (Chief of Adinkra symbols) watermark
- * Represents greatness, charisma, and leadership — perfect for a team section.
+ * Represents greatness, charisma, and leadership - perfect for a team section.
  * Concentric circles + cardinal diamond markers.
  */
 export function AdinkraheneWatermark() {
@@ -94,7 +94,7 @@ export function AdinkraheneWatermark() {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {/* Concentric circles — Adinkrahene */}
+      {/* Concentric circles - Adinkrahene */}
       <circle cx={cx} cy={cy} r={r1} stroke="white" strokeWidth="2" />
       <circle cx={cx} cy={cy} r={r2} stroke="white" strokeWidth="2" />
       <circle cx={cx} cy={cy} r={r3} stroke="white" strokeWidth="2" />
@@ -116,7 +116,7 @@ export function AdinkraheneWatermark() {
 }
 
 /**
- * Kente corner triangle accent — top-left of avatar panel.
+ * Kente corner triangle accent - top-left of avatar panel.
  * Kente cloth traditionally uses bold geometric triangles.
  */
 export function KenteCornerTriangles() {
@@ -127,7 +127,7 @@ export function KenteCornerTriangles() {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
     >
-      {/* Three stacked triangles — terracotta, gold, white */}
+      {/* Three stacked triangles - terracotta, gold, white */}
       <polygon points="0,0 72,0 0,72" fill="#C47B35" opacity="0.30" />
       <polygon points="0,0 48,0 0,48" fill="#D4A300" opacity="0.35" />
       <polygon points="0,0 24,0 0,24" fill="rgba(255,255,255,0.28)" />
@@ -137,7 +137,7 @@ export function KenteCornerTriangles() {
   )
 }
 
-/** Bottom-right corner accent — mirrors top-left */
+/** Bottom-right corner accent - mirrors top-left */
 export function KenteCornerBottomRight() {
   return (
     <svg
@@ -206,7 +206,7 @@ function AvatarRings({ size = 160 }: { size?: number }) {
 }
 
 /**
- * Kente horizontal colour band — top edge of the info panel.
+ * Kente horizontal colour band - top edge of the info panel.
  * A signature element of Kente weaving from Ghana.
  */
 export function KenteStrip() {
@@ -220,7 +220,7 @@ export function KenteStrip() {
 }
 
 /**
- * Mud-cloth (Bogolanfini) inspired sidebar stripe — left edge of info panel.
+ * Mud-cloth (Bogolanfini) inspired sidebar stripe - left edge of info panel.
  * Mali mud cloth uses alternating filled rectangles in earthy tones.
  */
 function MudclothSidebar() {
@@ -442,7 +442,7 @@ export default function TeamSlider() {
                   </motion.div>
                 </div>
 
-                {/* Bottom row — dots + arrows */}
+                {/* Bottom row - dots + arrows */}
                 <div className="flex items-center justify-between pt-5 mt-5 border-t border-yye-green/[0.08]">
 
                   {/* Diamond dot indicators */}

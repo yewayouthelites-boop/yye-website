@@ -33,12 +33,12 @@ export default function Navbar() {
           scrolled ? 'shadow-nav' : '',
         ].join(' ')}
       >
-        {/* Logo — full wordmark (green text variant for white navbar) */}
-        <Link href="/" className="flex items-center no-underline" aria-label="Yèwà Youth Elites home">
+        {/* Logo - full wordmark (green text variant for white navbar) */}
+        <Link href="/" className="flex items-center no-underline" aria-label="Yewa Youth Elites home">
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/yye-wordmark-green.svg"
-            alt="Yèwà Youth Elites"
+            alt="Yewa Youth Elites"
             height={36}
             style={{ height: 36, width: 'auto' }}
           />

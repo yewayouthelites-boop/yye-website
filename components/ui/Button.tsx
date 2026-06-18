@@ -2,7 +2,7 @@
 
 import React from 'react'
 
-/* ── tiny cn() utility — no clsx/tailwind-merge needed ─────────────── */
+/* ── tiny cn() utility - no clsx/tailwind-merge needed ─────────────── */
 function cn(...classes: (string | undefined | null | false)[]): string {
   return classes.filter(Boolean).join(' ')
 }
@@ -31,7 +31,7 @@ export type ButtonVariant =
   | 'link-color'
   | 'link-gray'
   | 'destructive-ghost'
-  | 'accent'          // YYE yellow — donate / support CTAs
+  | 'accent'          // YYE yellow - donate / support CTAs
 
 export type ButtonSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl'
 

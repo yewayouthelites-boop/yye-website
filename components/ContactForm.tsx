@@ -15,51 +15,30 @@ const ROLE_OPTIONS = [
 
 export default function ContactForm() {
   const [role, setRole] = useState('')
-  const [submitted, setSubmitted] = useState(false)
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    setSubmitted(true)
-  }
-
-  if (submitted) {
-    return (
-      <div className="bg-white rounded-[20px] p-10 border border-yye-green/[0.1] text-center py-16">
-        <div className="w-16 h-16 bg-yye-green/[0.08] rounded-full flex items-center justify-center mx-auto mb-5">
-          <svg className="w-8 h-8 text-yye-green" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
-          </svg>
-        </div>
-        <p className="font-extrabold text-yye-dark text-lg mb-2">Message received!</p>
-        <p className="text-sm text-yye-gray leading-[1.6]">
-          Thank you for reaching out. The YYE team will be in touch soon.
-        </p>
-        <Button
-          variant="link-color"
-          size="sm"
-          onClick={() => setSubmitted(false)}
-          className="mt-6"
-        >
-          Send another message
-        </Button>
-      </div>
-    )
-  }
+  const selectedRole = ROLE_OPTIONS.find((option) => option.value === role)?.label || 'Not specified'
 
   return (
     <div className="bg-white rounded-[20px] p-10 border border-yye-green/[0.1]">
       <h3 className="text-[1.15rem] font-extrabold mb-6 text-yye-dark">Send us a message</h3>
 
-      <form onSubmit={handleSubmit} className="flex flex-col gap-4">
+      <form
+        action="https://formsubmit.co/yewayouthelites@gmail.com"
+        method="POST"
+        className="flex flex-col gap-4"
+      >
+        <input type="hidden" name="_subject" value="New YYE contact message" />
+        <input type="hidden" name="_template" value="table" />
+        <input type="hidden" name="_captcha" value="false" />
+        <input type="hidden" name="Role" value={selectedRole} />
 
         {/* Name row */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          <Input label="First Name" placeholder="e.g. Adebayo" required />
-          <Input label="Last Name" placeholder="e.g. Okafor" required />
+          <Input name="First Name" label="First Name" placeholder="e.g. Adebayo" required />
+          <Input name="Last Name" label="Last Name" placeholder="e.g. Okafor" required />
         </div>
 
         {/* Email */}
-        <Input label="Email Address" type="email" placeholder="you@example.com" required />
+        <Input name="email" label="Email Address" type="email" placeholder="you@example.com" required />
 
         {/* Custom Select for role */}
         <Select
@@ -76,6 +55,7 @@ export default function ContactForm() {
             Message
           </label>
           <textarea
+            name="Message"
             placeholder="Tell us how you'd like to get involved…"
             required
             className="w-full px-4 py-3 rounded-[10px] border border-yye-green/[0.18] bg-white font-sans text-sm text-yye-dark placeholder:text-gray-400 outline-none transition-all resize-y min-h-[110px] focus:border-yye-green focus:ring-1 focus:ring-yye-green/[0.15]"

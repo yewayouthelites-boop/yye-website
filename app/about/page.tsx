@@ -13,13 +13,11 @@ import TeamSlider, {
 export const metadata: Metadata = {
   title: "About Us",
   description:
-    "Learn about the Yèwà Youth Elites movement — our story, mission, vision, and the executive team driving our programs.",
+    "Learn about the Yewa Youth Elites community, our story, mission, vision, and the executive team driving our programs.",
 };
 
-/* ── Note: team data lives in components/TeamSlider.tsx ─────────────── */
-
 const objectives = [
-  "Promote and preserve Yèwà culture and heritage",
+  "Promote and preserve Yewa culture and heritage",
   "Support youth development through education and mentorship",
   "Encourage innovation, entrepreneurship, and career growth",
   "Provide academic support and guidance for students",
@@ -31,26 +29,25 @@ const approach = [
   {
     num: "01",
     title: "Community-driven design",
-    desc: "Every program is shaped by listening to the real challenges young people and communities face — not assumptions.",
+    desc: "Every program is shaped by listening to the real challenges young people and communities face, not assumptions.",
   },
   {
     num: "02",
     title: "School & leader partnerships",
-    desc: "We work directly with schools and local leaders to deliver programs where they matter most — on the ground.",
+    desc: "We work directly with schools and local leaders to deliver programs where they matter most on the ground.",
   },
   {
     num: "03",
     title: "Mentorship & exposure",
-    desc: "We connect Yèwà youth with mentors and opportunities that expand their sense of what's possible for their future.",
+    desc: "We connect Yewa youth with mentors and opportunities that expand their sense of what's possible for their future.",
   },
   {
     num: "04",
     title: "Impact-focused execution",
-    desc: "We are deliberate about outcomes — every initiative is designed to create meaningful, measurable change in young lives.",
+    desc: "We are deliberate about outcomes, and every initiative is designed to create meaningful, measurable change in young lives.",
   },
 ];
 
-/* ── Page ────────────────────────────────────────────────────────────── */
 export default function AboutPage() {
   return (
     <>
@@ -80,13 +77,12 @@ export default function AboutPage() {
             className="font-extrabold text-white leading-[1.1] tracking-[-0.02em] mb-4"
             style={{ fontSize: "clamp(2.4rem, 5vw, 4rem)" }}
           >
-            We are <em className="text-yye-yellow not-italic">more than</em> an
-            organization.
+            We are young professionals from Yewa focused on building Yewa.
           </h1>
           <p className="text-base text-white/65 leading-[1.7] max-w-[540px]">
-            Yèwà Youth Elites is a movement — built on culture, driven by
-            purpose, and committed to raising a generation of Yèwà youth who are
-            ready to lead.
+            Yewa Youth Elites is a membership based community strictly by
+            invitation built on culture, driven by purpose and committed to
+            raising a generation of Yewa youth who are ready to lead.
           </p>
         </div>
       </div>
@@ -103,10 +99,10 @@ export default function AboutPage() {
               </span>
               <h3 className="text-[1.4rem] font-extrabold mb-3">Who We Are</h3>
               <p className="text-sm leading-[1.7] opacity-85">
-                Yèwà Youth Elites (YYE) is a youth-focused, non-profit
+                Yewa Youth Elites (YYE) is a youth-focused, non-profit
                 organization dedicated to promoting the cultural heritage of the
-                Yèwà people while driving sustainable youth development across
-                Yèwà communities.
+                Yewa people while driving sustainable youth development across
+                Yewa communities.
               </p>
             </div>
 
@@ -117,7 +113,7 @@ export default function AboutPage() {
               </div>
               <p className="text-[13px] font-bold text-yye-dark leading-[1.4]">
                 Founded to empower young people with the mindset, skills, and
-                opportunities they need — without losing their cultural
+                opportunities they need without losing their cultural
                 identity.
               </p>
             </div>
@@ -141,11 +137,11 @@ export default function AboutPage() {
               {[
                 {
                   label: "Education & Mentorship",
-                  desc: "School outreach, academic guidance, and mentorship that opens doors for Yèwà students.",
+                  desc: "School outreach, academic guidance, and mentorship that opens doors for Yewa students.",
                 },
                 {
                   label: "Cultural Promotion",
-                  desc: "Events and initiatives that celebrate and preserve the rich Yèwà identity and heritage.",
+                  desc: "Events and initiatives that celebrate and preserve the rich Yewa identity and heritage.",
                 },
                 {
                   label: "Youth Empowerment",
@@ -153,7 +149,7 @@ export default function AboutPage() {
                 },
                 {
                   label: "Community Development",
-                  desc: "Programs that foster unity and sustainable growth across Yèwà communities.",
+                  desc: "Programs that foster unity and sustainable growth across Yewa communities.",
                 },
               ].map(({ label, desc }) => (
                 <div
@@ -162,7 +158,7 @@ export default function AboutPage() {
                 >
                   <div className="w-2.5 h-2.5 min-w-[10px] bg-yye-green rounded-full mt-1.5" />
                   <p className="text-sm text-yye-dark leading-[1.6]">
-                    <strong className="text-yye-green">{label}</strong> — {desc}
+                    <strong className="text-yye-green">{label}</strong>: {desc}
                   </p>
                 </div>
               ))}
@@ -189,12 +185,12 @@ export default function AboutPage() {
                 Our Mission
               </p>
               <h3 className="text-[1.5rem] font-extrabold text-white leading-[1.2] mb-3">
-                Empowering Yèwà youths through education, mentorship, and
+                Empowering Yewa youths through education, mentorship, and
                 culture.
               </h3>
               <p className="text-sm leading-[1.8] text-white/85">
                 We build capacity, preserve cultural values, and create pathways
-                for young Yèwà people to thrive — both within their communities
+                for young Yewa people to thrive both within their communities
                 and in the wider world.
               </p>
             </div>
@@ -203,11 +199,11 @@ export default function AboutPage() {
                 Our Vision
               </p>
               <h3 className="text-[1.5rem] font-extrabold text-yye-yellow leading-[1.2] mb-3">
-                A generation of Yèwà youths who are grounded, equipped, and
+                A generation of Yewa youths who are grounded, equipped, and
                 globally competitive.
               </h3>
               <p className="text-sm leading-[1.8] text-white/75">
-                We see a future where every Yèwà youth has the identity,
+                We see a future where every Yewa youth has the identity,
                 knowledge, and opportunity to lead a meaningful, impactful life.
               </p>
             </div>
@@ -244,7 +240,7 @@ export default function AboutPage() {
           <h2 className="section-title text-center">Our approach to impact.</h2>
           <p className="section-sub mx-auto text-center">
             Through mentorship, exposure, and access to opportunities, YYE
-            unlocks the full potential of Yèwà youths.
+            unlocks the full potential of Yewa youths.
           </p>
         </RevealWrapper>
 
@@ -280,7 +276,7 @@ export default function AboutPage() {
           </p>
         </RevealWrapper>
 
-        {/* Slider — constrained width so it reads as a focused panel */}
+        {/* Slider constrained width so it reads as a focused panel */}
         <RevealWrapper className="max-w-[760px] mx-auto">
           <TeamSlider />
         </RevealWrapper>
