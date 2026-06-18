@@ -3,7 +3,6 @@ import { NextResponse } from 'next/server'
 const RESEND_EMAIL_ENDPOINT = 'https://api.resend.com/emails'
 const DEFAULT_TO_EMAIL = 'yewayouthelites@gmail.com'
 const DEFAULT_FROM_EMAIL = 'YYE Website <onboarding@resend.dev>'
-
 type ContactPayload = {
   firstName?: string
   lastName?: string
