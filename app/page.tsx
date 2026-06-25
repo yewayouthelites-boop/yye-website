@@ -117,7 +117,7 @@ export default function HomePage() {
             alt="About Us"
             layout="fill"
             objectFit="cover"
-            className=" opacity-5 blur-sm"
+            className=" opacity-10 blur-sm"
           />
         </div>
       </section>
