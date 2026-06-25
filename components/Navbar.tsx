@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react'
 import Link from 'next/link'
 import { usePathname } from 'next/navigation'
+import { HiHeart } from 'react-icons/hi2'
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false)
@@ -40,7 +41,8 @@ export default function Navbar() {
             src="/yye-wordmark-green.svg"
             alt="Yewa Youth Elites"
             height={36}
-            style={{ height: 36, width: 'auto' }}
+            width={100}
+            className=''
           />
         </Link>
 
@@ -112,17 +114,21 @@ export default function Navbar() {
           </Link>
           <Link
             href="/donate"
-            className="bg-yye-yellow text-yye-dark px-6 py-3 rounded-[8px] text-center font-bold no-underline"
+            className="bg-yye-yellow flex items-center gap-1 text-yye-dark px-6 py-3 rounded-[8px] text-center font-bold no-underline"
             onClick={() => setMobileOpen(false)}
           >
-            Donate 💛
+            Donate  <HiHeart
+                              className="text-red-600"
+                              size={18}
+                              aria-hidden="true"
+                            />
           </Link>
           <Link
             href="/#contact"
             className="bg-yye-green text-white px-6 py-3 rounded-[8px] text-center font-bold no-underline"
             onClick={() => setMobileOpen(false)}
           >
-            Join Us →
+            Join Us 
           </Link>
         </div>
       )}
