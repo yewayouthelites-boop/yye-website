@@ -77,6 +77,16 @@ export default function Navbar() {
             </Link>
           </li>
           <li>
+            <Link
+              href="/news"
+              className={`text-sm font-medium no-underline transition-colors duration-200 ${
+                isActive('/news') ? 'text-yye-green font-bold' : 'text-yye-dark hover:text-yye-green'
+              }`}
+            >
+              News
+            </Link>
+          </li>
+          <li>
             <Link href="/donate" className="nav-donate-btn">
               Donate
             </Link>
@@ -111,6 +121,9 @@ export default function Navbar() {
           </Link>
           <Link href="/#programs" className="text-base font-medium text-yye-dark no-underline" onClick={() => setMobileOpen(false)}>
             Programs
+          </Link>
+          <Link href="/news" className="text-base font-medium text-yye-dark no-underline" onClick={() => setMobileOpen(false)}>
+            News
           </Link>
           <Link
             href="/donate"
