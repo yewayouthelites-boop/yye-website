@@ -63,7 +63,7 @@ export default function ContactForm() {
   };
 
   return (
-    <div className="bg-white rounded-[20px] p-10 border border-yye-green/[0.1]">
+    <div className="bg-white rounded-[20px] p-4 sm:p-10 border border-yye-green/[0.1]">
       <h3 className="text-[1.15rem] font-extrabold mb-6 text-yye-dark">
         Send us a message
       </h3>
@@ -149,7 +149,7 @@ export default function ContactForm() {
       {status === "success" && (
         <Portal>
         <div
-          className="fixed inset-0 z-[100] flex items-center justify-center bg-yye-dark/65 px-4 py-8 backdrop-blur-sm"
+          className="fixed inset-0 z-[100] flex items-center justify-center bg-yye-dark/65 p-2 sm:px-4 py-8 backdrop-blur-sm"
           role="dialog"
           aria-modal="true"
           aria-labelledby="contact-success-title"

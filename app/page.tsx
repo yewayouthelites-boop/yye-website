@@ -117,7 +117,7 @@ export default function HomePage() {
             alt="About Us"
             layout="fill"
             objectFit="cover"
-            className=" opacity-5 blur-sm"
+            className=" opacity-10 blur-sm"
           />
         </div>
       </section>
@@ -163,7 +163,7 @@ export default function HomePage() {
         <RevealWrapper delay={80}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-12">
             {/* Mission */}
-            <div className="bg-yye-green rounded-[20px] p-10 border border-white/[0.08]">
+            <div className="bg-yye-green rounded-[20px] p-4   sm:p-10 border border-white/[0.08]">
               <p className="text-[11px] font-bold tracking-[0.14em] uppercase text-white/70 mb-3">
                 Our Mission
               </p>
@@ -197,7 +197,7 @@ export default function HomePage() {
       </section>
 
       {/* ══ DONATE CTA ════════════════════════════════════════════════ */}
-      <section id="donate-cta" className="bg-yye-cream px-[5%] py-20">
+      <section id="donate-cta" className="bg-yye-cream px-[5%] py-10 sm:py-20">
         <RevealWrapper className="flex items-center justify-between gap-8 flex-wrap">
           <div>
             <h2

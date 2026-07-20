@@ -91,7 +91,7 @@ export default function DonatePage() {
 
             {/* Bank transfer card */}
             <RevealWrapper>
-              <div className="bg-white rounded-[20px] p-8 border border-yye-green/[0.1]">
+              <div className="bg-white rounded-[20px] p-3 sm:p-8 border border-yye-green/[0.1]">
                 <h3 className="text-[1.1rem] font-extrabold mb-1">Bank Transfer</h3>
                 <p className="text-[13px] text-yye-gray leading-[1.6] mb-5">
                   Prefer to pay directly to our account? Transfer and send us your receipt.
@@ -119,7 +119,7 @@ export default function DonatePage() {
 
             {/* Why donate card */}
             <RevealWrapper delay={80}>
-              <div className="bg-yye-dark rounded-[20px] p-8">
+              <div className="bg-yye-dark rounded-[20px]  p-3 sm:p-8">
                 <h3 className="text-base font-extrabold text-yye-yellow mb-5 leading-[1.3]">
                   Your money goes directly to Yewa youth.
                 </h3>

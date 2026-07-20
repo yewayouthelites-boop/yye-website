@@ -214,7 +214,7 @@ export default function DonateForm() {
 
   return (
     <>
-      <div className="bg-white rounded-[20px] p-10 border border-yye-green/[0.12]">
+      <div className="bg-white rounded-[20px] p-4 sm:p-10 border border-yye-green/[0.12]">
         <h3 className="text-[1.3rem] font-extrabold mb-1">Make a donation</h3>
         <p className="text-sm text-yye-gray mb-6">
           Every naira goes directly to YYE programs and initiatives.
@@ -231,7 +231,7 @@ export default function DonateForm() {
           {/* Preset amounts */}
           <div>
             <label className="form-label mb-2">Select an amount</label>
-            <div className="grid grid-cols-3 gap-3">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
               {PRESET_AMOUNTS.map((amt) => (
                 <button
                   key={amt}
