@@ -34,15 +34,15 @@ interface ArticlePreview {
   readTime: string
 }
 
-const categoryTabs = [
-  'All Posts',
-  'Youth Development',
-  'Entrepreneurship',
-  'Skills & Training',
-  'Community Impact',
-  'Events',
-  'Success Stories',
-]
+// const categoryTabs = [
+//   'All Posts',
+//   'Youth Development',
+//   'Entrepreneurship',
+//   'Skills & Training',
+//   'Community Impact',
+//   'Events',
+//   'Success Stories',
+// ]
 
 const articlePreviews: readonly ArticlePreview[] = [
   {
