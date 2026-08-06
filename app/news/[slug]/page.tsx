@@ -4,8 +4,10 @@ import { PortableText } from '@portabletext/react'
 import Image from 'next/image'
 import { notFound } from 'next/navigation'
 import type { Metadata } from 'next'
+import { Comments } from '@/components/Comments'
 
 interface Post {
+  _id: string
   title: string
   slug: { current: string }
   mainImage?: any
@@ -17,7 +19,7 @@ interface Post {
 async function getPost(slug: string): Promise<Post | null> {
   return client.fetch(
     `*[_type == "post" && slug.current == $slug][0] {
-      title, slug, mainImage, publishedAt, body, excerpt
+      _id, title, slug, mainImage, publishedAt, body, excerpt
     }`,
     { slug }
   )
@@ -71,6 +73,8 @@ export default async function PostPage({ params }: { params: { slug: string } })
           <PortableText value={post.body} />
         </div>
       )}
+
+      <Comments postId={post._id} />
     </article>
   )
 }
